@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass{article}
 \usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
 \usepackage{pgfplots}
 \usepackage{multicol}
@@ -79,28 +79,7 @@
 %================================
 % DEFINITION BOX
 %================================
-
-\newtcbtheorem[]{Definition}{Definition}{enhanced,
-	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
-	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
-	boxed title style={frame code={
-					\path[fill=tcbcolback]
-					([yshift=-1mm,xshift=-1mm]frame.north west)
-					arc[start angle=0,end angle=180,radius=1mm]
-					([yshift=-1mm,xshift=1mm]frame.north east)
-					arc[start angle=180,end angle=0,radius=1mm];
-					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-						middle color=tcbcolback!80!black]
-					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
-					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
-					-- (frame.south east) -- (frame.south west)
-					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
-					[sharp corners]-- cycle;
-				},interior engine=empty,
-		},
-	fonttitle=\bfseries,
-	title={#2},#1}{def}
-\newtcbtheorem[]{definition}{Definition}{enhanced,
+\newtcbtheorem[number within=section]{definition}{Definition}{enhanced,
 	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
@@ -166,7 +145,7 @@
 %================================
 % EXAMPLE BOX
 %================================
-\newtcbtheorem[number within=section]{Example}{Example}
+\newtcbtheorem[number within=section, use counter from=definition]{example}{Eksempel}
 {%
 	colback = myexamplebg
 	,breakable
@@ -187,7 +166,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{Theorem}{Theorem}
+\newtcbtheorem[number within=section, use counter from=definition]{theorem}{Sætning}
 {%
 	enhanced,
 	breakable,
@@ -213,14 +192,93 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
 \lhead{Minrui Kevin Zhou 3.b}
-\rhead{Aflevering}
 
-\title{Aflevering\\
-{\Large \textbf{3.b mat A}}}
-\author{Kevin Zhou}
+\title{SRP}
+\author{Kevin Zhou, 2.b}
 \date{\today}
 
 \begin{document}
 \include{title.tex}
+\begin{abstract}
+  Dette er mit resumé.
+\end{abstract}
+
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\section{Indledning}
+  \label{sec:Indledning}
+%Ordnet legeme def
+%\begin{definition}[colbacktitle=red!75!black]{Ordnet legeme}{}
+%  Et ordnet legeme er et legeme $\mathbb{F}$ med en delmængde $P \subset \mathbb{F}$, kaldet den positive delmængde med egenskaberne:
+%  \begin{itemize}
+%    \item Hvis $a \in \mathbb{F}$, så $a \in P$ eller $a=0$ eller $-a \in P$. 
+%    \item Hvis $a \in P$, så $-a \not\in P$.
+%    \item Hvis $a,\,b \in P$, så $a + b \in P$ og $ab \in P$. 
+%  \end{itemize}
+%\end{definition}
+
+\section{De reele tal}%
+\label{sec:De reele tal}
+
+
+\section{Kontinuitet}%
+\label{sec:Kontinuitet}
+
+\begin{definition}[colbacktitle=red!75!black]{Begrænset funktion}{}
+  
+\end{definition}
+\section{Riemann-integralet}%
+\label{sec:Riemann-integralet}
+I denne sektion vil vi definere Riemann-integralet.
+Før vi gør dette, er vi nødt til at starte med nogle definitioner, vi har brug for.
+\begin{definition}[colbacktitle=red!75!black]{Inddeling}{}
+  Antag $a,\;b \in \mathbb{R}$ sådan at $a <b$.
+  Ved en inddeling $P$ af $[a;b]$ forstår vi en endelig mængde $\{x_0,\dotsc, x_n\}$, hvor
+  \[
+  a=x_0<x_1<\cdots<x_n=b
+  \] 
+  og vi skriver 
+  \[
+  \Delta x_i=x_i-x_{i-1} \quad (i=1,\ldots ,n)
+  \]  
+\end{definition}
+Med en inddeling kan vi dele intervallet $[a;b]$ op i $n$ delintervaller, hvor det $i$'te delinterval har længden $\Delta x_i$:
+\[
+[a;b]=[x_0;x_1] \cup [x_1;x_2]\cup \cdots \cup [x _{n-1};x_n]
+\] 
+Vi vil nu definere over- og undersummen af en funktion med hensyn til en given inddeling.
+
+\begin{definition}[colbacktitle=red!75!black]{Over- og undersum}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion, og $P=\{x_0,\ldots, x_n\}$ er en inddeling af $[a;b]$. 
+  Lad 
+  \[
+  M_i=\sup \{ f(x):x \in [x _{x_{i-1}};x_i] \} \quad{\text{og}} \quad m_i=\inf \{ f(x):x \in [x _{x_{i-1}};x_i] \}.
+  \] 
+  Så er oversummen af $f$ med hensyn til $P$ defineret ved
+  \[
+  U(f,P)=\sum_{i=1}^{n} M_i \Delta x_i.
+  \] 
+  Tilsvarende er undersummen af $f$ med hensyn til $P$ defineret ved
+  \[
+  L(f,P)=\sum_{i=1}^{n} m_i \Delta x_i.
+  \] 
+\end{definition}
+Skriv eksistens
+
+\begin{theorem}{Uligheder med over- og undersummer}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P_1$, $P_2$ er inddelinger af $[a;b]$ sådan at $P_1 \subseteq P_2$. Så gælder
+  \[
+  L(f,P_1)\leq L(f,P_2) \leq U(f,P_2) \leq U(f,P_1)
+  \] 
+\end{theorem}
+\begin{proof} 
+  Bevis det selv, lol.
+\end{proof}
+
+\section{Numerisk integration}%
+\label{sec:Numerisk integration}
+
+
 
 \end{document}
