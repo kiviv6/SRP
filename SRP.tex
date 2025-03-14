@@ -20,6 +20,8 @@
 \renewcommand{\cellalign}{cl}
 \renewcommand{\theadalign}{cl}
 \renewcommand\theadfont{\bfseries}
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\usepackage{setspace} %%Enables \doublespacing command for double linespacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SELF MADE COLORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,7 +81,7 @@
 %================================
 % DEFINITION BOX
 %================================
-\newtcbtheorem[number within=section]{definition}{Definition}{enhanced,
+\newtcbtheorem[number within=section]{Definition}{Definition}{enhanced,
 	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
@@ -99,6 +101,25 @@
 		},
 	fonttitle=\bfseries,
 	title={#2},#1}{def}
+
+\newtcbtheorem[number within=section]{definition}{Definition}
+{%
+	enhanced,
+	breakable,
+	colback = red!5,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{solid, red!75!black},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = red!75!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, red!75!black},
+}
+{th}
 
 \newtcbtheorem{theo}%
     {Theorem}{}{theorem}
@@ -189,6 +210,7 @@
 % SELF MADE COMMANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+\renewcommand\qedsymbol{$\blacksquare$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
 \lhead{Minrui Kevin Zhou 3.b}
@@ -221,18 +243,27 @@
 \section{De reele tal}%
 \label{sec:De reele tal}
 
+I denne sektion vil vi først og fremmest kigge på nogle vigtige egenskaber ved $\mathbb{R}$, der er nødvendige for en stringent opbygning af integrationsteorien.
+Derefter indfører vi grundlæggende teori om topologi for $\mathbb{R}$, som vi senere skal bruge til at definere kontinuitet samt grænseværdien for en funktion.
+\begin{definition}{Overtal, undertal}{}
+  Antag, at $A \subseteq \mathbb{R}$. 
+  Hvis der eksisterer $y \in \mathbb{R}$ sådan at $x \leq y$ for alle $x \in A$, så siges $A$ at være opad begrænset, og $y$ kaldes et overtal for $A$. 
+
+  Hvis der eksisterer $z \in \mathbb{R}$ sådan at $x \geq z$ for alle $x \in A$, så siges $A$ at være nedad begrænset, og $z$ kaldes et undertal for $A$. 
+\end{definition}
+
 
 \section{Kontinuitet}%
 \label{sec:Kontinuitet}
 
-\begin{definition}[colbacktitle=red!75!black]{Begrænset funktion}{}
+\begin{definition}{Begrænset funktion}{}
   
 \end{definition}
 \section{Riemann-integralet}%
 \label{sec:Riemann-integralet}
-I denne sektion vil vi definere Riemann-integralet.
+I denne sektion vil vi definere Riemann-integralet.\footnote{Sektionen er baseret på \cite{Abbott2002}, s. 183-194}
 Før vi gør dette, er vi nødt til at starte med nogle definitioner, vi har brug for.
-\begin{definition}[colbacktitle=red!75!black]{Inddeling}{}
+\begin{definition}{Inddeling}{}
   Antag $a,\;b \in \mathbb{R}$ sådan at $a <b$.
   Ved en inddeling $P$ af $[a;b]$ forstår vi en endelig mængde $\{x_0,\dotsc, x_n\}$, hvor
   \[
@@ -249,7 +280,7 @@ Med en inddeling kan vi dele intervallet $[a;b]$ op i $n$ delintervaller, hvor d
 \] 
 Vi vil nu definere over- og undersummen af en funktion med hensyn til en given inddeling.
 
-\begin{definition}[colbacktitle=red!75!black]{Over- og undersum}{}
+\begin{definition}{Over- og undersum}{}
   Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion, og $P=\{x_0,\ldots, x_n\}$ er en inddeling af $[a;b]$. 
   Lad 
   \[
@@ -273,12 +304,19 @@ Skriv eksistens
   \] 
 \end{theorem}
 \begin{proof} 
-  Bevis det selv, lol.
+  j
 \end{proof}
 
 \section{Numerisk integration}%
 \label{sec:Numerisk integration}
 
 
+%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
+\singlespacing %%Makes single spaced
+\bibliographystyle{apa-good} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+\setlength{\bibsep}{5pt} %%Changes spacing between bib entries
+\bibliography{Zotero} %%bib database found in bib folder, in bibtex folder
+\thispagestyle{empty} %%Removes page numbers
 \end{document}
