@@ -3,7 +3,7 @@
 \usepackage{pgfplots}
 \usepackage{multicol}
 \usepackage{makecell}
-\pgfplotsset{compat=1.15}
+\pgfplotsset{compat=1.18}
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows}
 \usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
@@ -81,7 +81,9 @@
 %================================
 % DEFINITION BOX
 %================================
-\newtcbtheorem[number within=section]{Definition}{Definition}{enhanced,
+\newtheorem{defin}{Definition}[section] % Creates a new counter, number within section
+
+\newtcbtheorem[number within=section, use counter*=defin]{Definition}{Definition}{enhanced,
 	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
@@ -102,7 +104,7 @@
 	fonttitle=\bfseries,
 	title={#2},#1}{def}
 
-\newtcbtheorem[number within=section]{definition}{Definition}
+\newtcbtheorem[number within=section, use counter*=defin]{definition}{Definition}
 {%
 	enhanced,
 	breakable,
@@ -243,14 +245,49 @@
 \section{De reele tal}%
 \label{sec:De reele tal}
 
-I denne sektion vil vi først og fremmest kigge på nogle vigtige egenskaber ved $\mathbb{R}$, der er nødvendige for en stringent opbygning af integrationsteorien.
+I denne sektion vil vi først og fremmest undersøge nogle vigtige egenskaber ved $\mathbb{R}$, der er nødvendige for en stringent opbygning af integrationsteorien.
 Derefter indfører vi grundlæggende teori om topologi for $\mathbb{R}$, som vi senere skal bruge til at definere kontinuitet samt grænseværdien for en funktion.
 \begin{definition}{Overtal, undertal}{}
+  \label{def:overtal}
   Antag, at $A \subseteq \mathbb{R}$. 
   Hvis der eksisterer $y \in \mathbb{R}$ sådan at $x \leq y$ for alle $x \in A$, så siges $A$ at være opad begrænset, og $y$ kaldes et overtal for $A$. 
 
   Hvis der eksisterer $z \in \mathbb{R}$ sådan at $x \geq z$ for alle $x \in A$, så siges $A$ at være nedad begrænset, og $z$ kaldes et undertal for $A$. 
 \end{definition}
+
+Imidlertid, kan det også være interessant at kunne sige noget om, om et bestemt overtal er det mindste overtal og et bestemt undertal er det største undertal.
+
+\begin{definition}{Supremum, infimum}{}
+  \label{def:sup}
+  Antag, at $A \subseteq \mathbb{R}$. Et element $y \in \mathbb{R}$ kaldes supremum eller mindste overtal af $A$ og betegnes $\sup A$, hvis $y$ har følgende egenskaber:
+  \begin{itemize}
+    \item $y$ er et overtal for $A$.
+    \item $y \leq z$ for alle overtal $z$ af $A$. 
+  \end{itemize}
+\end{definition}
+\begin{example}[label=exa:]{Supremum og infimum af mængder}{}
+  Betragt mængderne
+  \[
+  A=\{ a \in \mathbb{R}: a>0 \} \quad \text{og} \quad B=\{ b \in \mathbb{R}:b \leq 1 \}. 
+  \] 
+\end{example}
+
+
+\begin{example}[label=exa:supQ]{Ikke-tom opad begrænset delmængde af $\mathbb{Q}$ uden supremum i $\mathbb{Q}$}{}
+  
+\end{example}
+
+Eksempel \ref{exa:supQ} motiverer den næste sætning, som vi her ikke vil bevise, da beviset er relativt langt og ikke interessant for vores foretagende.
+Sætningen er dog en følge af måden, hvorpå $\mathbb{R}$ er konstrueret.\footnote{$\mathbb{R}$ kan konstrueres fra $\mathbb{Q}$ via Dedekind-snit. \cite{Rudin1976}, s. 17-21}
+
+\begin{theorem}{$\mathbb{R}$ har supremum-egenskaben}{}
+  Antag, at $A \in \mathbb{R}$, $A \neq \emptyset$ og $A$ er opad begrænset. 
+  Så eksisterer $\sup A \in \mathbb{R}$.
+\end{theorem}
+
+Denne egenskab ved $\mathbb{R}$ kaldes for supremum-egenskaben. 
+
+
 
 
 \section{Kontinuitet}%
