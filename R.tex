@@ -79,7 +79,7 @@ Begge ord referer i dette tilfælde til elementerne i $\mathbb{R}$.
   
 \begin{definition}[label=def:omegn]{Omegn}{}
   Antag $p \in \mathbb{R}$. 
-  Så er en omegn af et punt $p$ en mængde 
+  Så er en omegn af et punkt $p$ en mængde 
   \[
   N_r(p)=\{ q \in \mathbb{R}:\abs{q-p} < r \}, \quad \text{ hvor }r \in \mathbb{R}^+. 
   \] 
@@ -107,9 +107,16 @@ Dette ses illustreret i \cref{fig:omegn}.
 
 \begin{definition}[label=def:fortætningspunkt]{Fortætningspunkt}{}
   Antag, at $A \subseteq \mathbb{R}$.
-  Et punkt $p \in \mathbb{R}$ er et fortætningspunkt af mængden $A$, hvis der for alle omegne $N_r(p)$ eksisterer et punkt $q \neq p$ i omegnen sådan at $q \in A$. 
+  Et punkt $p \in \mathbb{R}$ er et fortætningspunkt af mængden $A$, hvis alle omegne $N_r(p)$ indeholder et punkt $q \neq p$ i omegnen sådan at $q \in A$. 
 \end{definition}
 
+Fra definitionen er det klart, at et fortætningspunkt af en mængde ikke nødvendigvis behøver være et element i mængden.
+Dette tydeliggøres af det næste eksempel.
+
+\begin{example}[label=exa:]{Fortætningspunkter af en mængde}{}
+  Vi betragter mængden $B$ fra eksempel \ref{exa:supinf}. 
+  Mængden af alle fortætningspunkter af $B$ må være $B \cup \{ 0 \} $. 
+\end{example}
 
 
 
