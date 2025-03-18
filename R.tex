@@ -11,7 +11,7 @@ Derefter indfører vi grundlæggende teori om topologi for $\mathbb{R}$, som vi 
   Hvis der eksisterer $z \in \mathbb{R}$ sådan at $x \geq z$ for alle $x \in A$, så siges $A$ at være nedad begrænset, og $z$ kaldes et undertal for $A$. 
 \end{definition}
 
-Imidlertid, kan det også være interessant at kunne sige noget om, hvorvidt et bestemt overtal er det mindste overtal og et bestemt undertal er det største undertal.
+Imidlertid, kan det også være interessant at kunne sige noget om, hvorvidt et bestemt overtal er det mindste overtal og om et bestemt undertal er det største undertal.
 
 \begin{definition}[label=def:sup]{Supremum, infimum}{}
   Antag, at $A \subseteq \mathbb{R}$. Et element $y \in \mathbb{R}$ kaldes supremum eller mindste overtal af $A$ og betegnes $\sup A$, hvis $y$ har følgende egenskaber:
@@ -59,7 +59,7 @@ Vi har så
     \left(q + \delta \right)^2 &=q^2+\delta^2+2q \delta\\
     &=q^2+\left(2q+\delta \right) \cdot \delta \\
     &<q^2+5 \delta \\
-    &=2
+    &=2.
   \end{split}
   \end{equation*}
   Med andre ord er $q + \delta $ altså et element i $A$, og $q \neq \sup A$.  
@@ -70,7 +70,7 @@ Vi har så
   \begin{split}
    \alpha &=\frac{q^2-2}{2q}\\
   &=\frac{q}{2}-\frac{1}{q}\\
-    &<b
+    &<b.
    \end{split}
   \end{equation*}
   Vi har så $0<\alpha <q$, og der gælder 
@@ -79,7 +79,7 @@ Vi har så
     \left(q-\alpha \right)^2&=q^2+\alpha ^2 - 2 q \alpha \\
     &<q^2-2q \alpha \\
     &=q^2-(q^2-2)\\
-    &=2
+    &=2.
   \end{split}
   \end{equation*}
   Altså er $q- \alpha $ et overtal for $A$, hvilket vil sige, at $q \neq \sup A$. 
@@ -154,7 +154,7 @@ Dette ses illustreret i \cref{fig:omegn}.
   Antag, at $A \subseteq \mathbb{R}$. 
   Et punkt $p \in A$ kaldes et indre punkt af $A$, hvis der eksisterer en omegn $N_r(p)$ af $p$ sådan at $N_r(p) \subseteq A$. 
 
-  Mængden $A$ er lukket, hvis alle punkter i $A$ er indre punkter. 
+  Mængden $A$ er åben, hvis alle punkter i $A$ er indre punkter. 
 \end{definition}
 
 Som eksempel på åbne mængder, kan vi betragte omegne.
@@ -163,9 +163,41 @@ Som eksempel på åbne mængder, kan vi betragte omegne.
   Alle omegne $N_r(p)$ af et punkt $p \in \mathbb{R}$ er åbne. 
 \end{theorem}
 \begin{proof} 
-  Lad $q \in N_r(p)$.
+  Lad $q \in N_r(p)$ og $t=r-\abs{p-q} $.
+  Så har vi $\abs{p-q} <r$, hvilket vil sige, at $t>0$.
+  Fra trekantsuligheden har vi så, at der for alle $s \in N_t(q)$ gælder
+  \begin{equation*}
+  \begin{split}
+    \abs{p-s} &\leq \abs{p-q} + \abs{q-s} \\
+    &<\abs{q-p} + t \\
+    &=r.
+  \end{split}
+  \end{equation*}
+  Altså må $N_t(q)\subseteq N_r(p)$.
+  Således er $N_r(p)$ en åben mængde.
 \end{proof}
 
+Ideen i beviset af sætning \ref{theo:omegne_åbne} ses illustreret i \cref{fig:omegne_åbne}.
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \centering
+    \filldraw[black] (0,0) circle (2pt) node[below=3pt]{$p$};
+    \filldraw[black] (3,0) circle (2pt) node[below=3pt]{$q$};
+    \filldraw[black] (4.5,0) circle (2pt) node[below=3pt]{$s$};
+    \draw (-8,0) -- (8,0);
+    \draw [dashed] (-5,0.3) -- (-5,-0.3) node[anchor=north]{$p-r$};
+    \draw [dashed] (5,0.3) -- (5,-0.3) node[align=left,anchor=north]{$p+r=q+t$};
+    \draw [dashed] (1,0.3) -- (1,-0.3) node[anchor=north]{$q-t$};
+    \draw [decorate, decoration = {brace,amplitude=10pt}, thick] (-5,0.5) -- (5,0.5) node[midway,yshift=5ex]{$N_r(p)$};
+    \draw [decorate, decoration = {brace,amplitude=5pt,mirror}, thick] (1,-1) -- (5,-1) node[midway,yshift=-3.5ex]{$N_t(q)$};
+    %\draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4ex}] (1,0) -- (5,0) node[midway,yshift=-3em]{Konvergenzbereich};
+\end{tikzpicture}
+\end{center}
+  \caption{Ideen i beviset af sætning \ref{theo:omegne_åbne}}
+\label{fig:omegne_åbne}
+\end{figure}
 
 \begin{definition}[label=def:fortætningspunkt]{Fortætningspunkt}{}
   Antag, at $A \subseteq \mathbb{R}$.
@@ -175,7 +207,7 @@ Som eksempel på åbne mængder, kan vi betragte omegne.
 Fra definitionen er det klart, at et fortætningspunkt af en mængde ikke nødvendigvis behøver være et element i mængden.
 Dette tydeliggøres af det næste eksempel.
 
-\begin{example}[label=exa:]{Fortætningspunkter af en mængde}{}
+\begin{example}[label=exa:fortætningspunkter]{Fortætningspunkter af en mængde}{}
   Vi betragter mængden $B$ fra eksempel \ref{exa:supinf}. 
   Mængden af alle fortætningspunkter af $B$ må være $B'=B\, \cup\, \{ 0 \} $. 
 For at se, hvorfor det er tilfældet, lad $p \in B'$.
@@ -193,5 +225,29 @@ For at se, hvorfor det er tilfældet, lad $p \in B'$.
   Vi har nu vist, at $B'$ er mængden af alle fortætningspunkter af $B$.
 \end{example}
 
+Mere generelt gælder der faktisk, at hvis supremum og/eller infimum eksisterer for en delmængde af $\mathbb{R}$, så er de fortætningspunkter af mængden.
 
+Faktummet, at et fortætningspunkt af en mængde ikke nødvendigvis er et element i mængden (hvilket ses i eksempel \ref{exa:fortætningspunkter}), motiverer den næste definition.
+
+\begin{definition}[label=def:lukket]{Lukket mængde }{}
+  En mængde $A \subseteq \mathbb{R}$ er lukket, hvis den indeholder alle sine fortætningspunkter. 
+\end{definition}
+
+Vi vil nu bevise det intuitive resultat, at komplementærmængden til en åben mængde er lukket, og vice versa.
+Bemærk, at nogle benytter notationen $\overline A$ til at denotere afslutningen af $A$ (foreningsmængden af $A$ og mængden af alle dens fortætningspunkter), hvor vi her bruger den til at denotere komplementærmængden til $A$.
+
+\begin{theorem}[label=theo:åben_lukket_komp]{Mængde er lukket præcis når dens komplementærmængde er åben}{}
+  En mængde $A \in \mathbb{R}$ er lukket hvis og kun hvis dens komplementærmængde $\overline A$ er åben. 
+\end{theorem}
+\begin{proof} 
+  Antag først, at $A$ er lukket.
+  Så er alle $x \in \overline A$ ikke fortætningspunkter af $A$, og der eksisterer en omegn $N_r(x)$ sådan at $A \cap N_r(x)=\emptyset$. 
+  Det vil sige, at $N_r(x) \subseteq \overline A$, og $x$ er derfor et indre punkt af $\overline A$.
+  Således er $A$ åben. 
+
+  Omvendt, antag at $\overline A$ er åben, og lad $p$ være et fortætningspunkt af $A$. 
+  Så indeholder alle omegne $N_r(p)$ et punkt $q \in A$, og $p$ er derfor ikke et indre punkt af $\overline A$.
+  Siden $\overline A$ er åben, så må $p \in A$.
+  Altså indeholder $A$ alle sine fortætningspunkter og må være lukket. 
+\end{proof}
 
