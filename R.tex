@@ -38,8 +38,52 @@ Imidlertid, kan det også være interessant at kunne sige noget om, hvorvidt et 
 Bemærk, at $\sup A \in A$, hvor $\inf B \not\in B$.
 Det næste eksempel viser, at en ikke-tom opad begrænset delmængde af $\mathbb{Q}$ kan have supremum, der ikke er i $\mathbb{Q}$. 
 
-\begin{example}[label=exa:supQ]{Ikke-tom opad begrænset delmængde af $\mathbb{Q}$ uden supremum i $\mathbb{Q}$}{}
-  
+\begin{example}[label=exa:supQ]{\footnote{Eksemplet er baseret på \cite{Axler2024}, s. 9} Ikke-tom opad begrænset delmængde af $\mathbb{Q}$ uden supremum i $\mathbb{Q}$ }{}
+  Lad
+  \[
+  A=\{ a \in \mathbb{Q}:a^2<2 \} 
+  \] 
+Antag, at $q \in \mathbb{Q}$.
+Vi vil vise, at $q \neq \sup A$.
+Siden $\sqrt{2} $ er irrational, så må vi have $q^2<2$ eller $q^2>2$. 
+
+Hvis $q^2<2$, kan vi finde et element i $A$, der er lidt større end $q$.
+Vælg
+\[
+  \delta=\frac{2-q^2}{5}.
+\] 
+Siden $q < \abs{\sqrt{2} }<2$ og $0<\delta \leq \frac{2}{5} <1$, så må der gælde, at $2q+\delta<5$. 
+Vi har så 
+\begin{equation*}
+  \begin{split}
+    \left(q + \delta \right)^2 &=q^2+\delta^2+2q \delta\\
+    &=q^2+\left(2q+\delta \right) \cdot \delta \\
+    &<q^2+5 \delta \\
+    &=2
+  \end{split}
+  \end{equation*}
+  Med andre ord er $q + \delta $ altså et element i $A$, og $q \neq \sup A$.  
+
+  Antag nu, at $q^2>0$ og $q>0$ (når $q \leq 0$ er det trivielt, at $q \neq \sup A$). 
+  Lad 
+  \begin{equation*}
+  \begin{split}
+   \alpha &=\frac{q^2-2}{2q}\\
+  &=\frac{q}{2}-\frac{1}{q}\\
+    &<b
+   \end{split}
+  \end{equation*}
+  Vi har så $0<\alpha <q$, og der gælder 
+  \begin{equation*}
+  \begin{split}
+    \left(q-\alpha \right)^2&=q^2+\alpha ^2 - 2 q \alpha \\
+    &<q^2-2q \alpha \\
+    &=q^2-(q^2-2)\\
+    &=2
+  \end{split}
+  \end{equation*}
+  Altså er $q- \alpha $ et overtal for $A$, hvilket vil sige, at $q \neq \sup A$. 
+  Vi har nu vist, at mængden $A$ ikke har et supremum i $\mathbb{Q}$. 
 \end{example}
 
 Eksempel \ref{exa:supQ} motiverer den næste sætning, som vi her ikke vil bevise, da beviset er relativt langt og ikke interessant for vores foretagende.
@@ -86,6 +130,7 @@ Begge ord referer i dette tilfælde til elementerne i $\mathbb{R}$.
   Tallet $r$ kaldes for radius af omegnen $N_r(p)$. 
 \end{definition}
 Med andre ord, er en omegn af et punkt $p$ mængden af alle punkter indenfor en given afstand fra $p$.
+Ved en omegn i $\mathbb{R}$ (som vi lige har defineret) er der altså tale om et interval. 
 Dette ses illustreret i \cref{fig:omegn}.
 \begin{figure}[H]
 \begin{center}
@@ -105,6 +150,23 @@ Dette ses illustreret i \cref{fig:omegn}.
 \label{fig:omegn}
 \end{figure}
 
+\begin{definition}[label=def:åben]{Indre punkt, åben mængde }{}
+  Antag, at $A \subseteq \mathbb{R}$. 
+  Et punkt $p \in A$ kaldes et indre punkt af $A$, hvis der eksisterer en omegn $N_r(p)$ af $p$ sådan at $N_r(p) \subseteq A$. 
+
+  Mængden $A$ er lukket, hvis alle punkter i $A$ er indre punkter. 
+\end{definition}
+
+Som eksempel på åbne mængder, kan vi betragte omegne.
+
+\begin{theorem}[label=theo:omegne_åbne]{Omegne er åbne}{}
+  Alle omegne $N_r(p)$ af et punkt $p \in \mathbb{R}$ er åbne. 
+\end{theorem}
+\begin{proof} 
+  Lad $q \in N_r(p)$.
+\end{proof}
+
+
 \begin{definition}[label=def:fortætningspunkt]{Fortætningspunkt}{}
   Antag, at $A \subseteq \mathbb{R}$.
   Et punkt $p \in \mathbb{R}$ er et fortætningspunkt af mængden $A$, hvis alle omegne $N_r(p)$ indeholder et punkt $q \neq p$ i omegnen sådan at $q \in A$. 
@@ -115,7 +177,20 @@ Dette tydeliggøres af det næste eksempel.
 
 \begin{example}[label=exa:]{Fortætningspunkter af en mængde}{}
   Vi betragter mængden $B$ fra eksempel \ref{exa:supinf}. 
-  Mængden af alle fortætningspunkter af $B$ må være $B \cup \{ 0 \} $. 
+  Mængden af alle fortætningspunkter af $B$ må være $B'=B\, \cup\, \{ 0 \} $. 
+For at se, hvorfor det er tilfældet, lad $p \in B'$.
+  Så for enhver $r>0$ indeholder omegnen $N_r(p)$ et punkt $q=p+\frac{r}{2}$.
+  Siden 
+  \[
+  p \geq 0 \iff p + \frac{r}{2} > 0 \iff q>0
+  \] 
+  så må vi have $q \in B$.
+  Således må alle punkter i $B'$ være fortætningspunkter af $B$. 
+
+  Omvendt, antag at $x \not\in B'$.
+  Så har vi $x \in \{ x \in \mathbb{R}: x < 0 \} $.
+  Vi kan så vælge $r=\abs{x} >0$, og det er klart at $N_r(x) \cap B = \emptyset$.
+  Vi har nu vist, at $B'$ er mængden af alle fortætningspunkter af $B$.
 \end{example}
 
 
