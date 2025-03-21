@@ -1,8 +1,12 @@
-I dette afsnit SKRIV SENERE
+I dette afsnit definerer vi grænseværdien for en funktion stringent med den såkaldte $\varepsilon $-$\delta $-definition.
+Vi arbejder dog kun med reele funktioner med delmængder af $\mathbb{R}$ som definitionsmængde. 
+
+Vi undersøger så kontinuerte funktioner med lukkede intervaller som definitionsmængde, da disse funktioner har nogle specielle egenskaber, der ikke er gældende for alle kontinuerte funktioner.
+Disse resultater benyttes senere til at bevise vigtige resultater for Riemann-integralet.
 
 \subsection{Grænseværdier af reele funktioner af delmængder af $\mathbb{R}$}%
 \label{sub:Grænseværdi}
-\begin{definition}[label=def:grænseværdi]{Grænseværdi for funktion}{}
+\begin{definition}[label=def:grænseværdi]{Grænseværdi af funktion}{}
   Antag $X \subseteq \mathbb{R}$, $f:X \to \mathbb{R}$, og $p$ er et fortætningspunkt af $X$.
   Et tal $L$ kaldes for grænseværdien af $f$ i $p$ og vi skriver
   \[
@@ -70,7 +74,64 @@ Det næste eksempel viser, at selv hvis et punkt $p$ tilhører definitionsmængd
 \label{sub:Kontinuert}
 
 
-\begin{definition}{Begrænset funktion}{}
+\begin{definition}[label=def:kontinuert]{Kontinuert}{}
+ Antag $X \subseteq \mathbb{R}$, $f:X \to \mathbb{R}$ og $p \in X$.
+
+  Så er $f$ kontinuert i $p$, hvis der for alle $\varepsilon >0$ eksisterer $\delta >0$ sådan at når $x \in X$ og $\abs{x-p} < \delta  $, så gælder $\abs{f(x)-f(p)}<\varepsilon $. 
+
+  Hvis $f$ er kontinuert i alle punkter i $X$, så siger vi, at $f$ er kontinuert på $X$. 
+\end{definition}
+
+Ved første øjekast ligner dette definitionen af grænseværdier af funktioner til forveksling.
+Den største forskel ligger i, at vi her kræver, at $f$ skal være defineret i $p$. 
+Tilvarende skal vi i \cref{fig:epsilondelta} blot skrive $f(p)$ i stedet for $L$, for at figuren illustrerer definitionen på kontinuitet. 
+
+Sammenligner vi med definition \ref{def:grænseværdi}, ser vi, at hvis vi også antager, at $p$ er et fortætningspunkt af $X$, så er $f$ kontinuert i $p$ præcis når
+\[
+\lim_{x \to p} f(x) =f(p).\footnote{Kontinuitet defineres sådan i f.eks. \cite{Brydensholt2018}, s. 34. Bemærk, at grænseværdien $\lim\limits_{x \to p} f(x)$ ikke giver nogen mening, hvis $p$ er et isoleret punkt af $X$.}
+\] 
+Derudover medfører vores definition, at en funktion er kontinuert i alle isolerede punkter af dens definitionsmængde. 
+\begin{example}[label=exa:kontinuert_i_isoleret]{Funktioner er kontinuerte i isolerede punkter af dens definitionsmængde}{}
+ Antag $X \subseteq \mathbb{R}$, $f:X \to \mathbb{R}$, og $p$ er et isoleret punkt af $X$. 
+
+  Så er $p$ ikke et fortætningspunkt af $X$, hvilket vil sige, at der eksisterer en omegn $N_r(p)$ sådan at ${N_r(p) \cap X=\{ p \}  }$.
+  For alle $\varepsilon >0$ kan vi så vælge $\delta =r$. 
+  Så har vi, at når $x \in X$ og $\abs{x-p} <\delta $, så gælder
+  \[
+  \abs{f(x)-f(p)}=0<\epsilon.
+  \] 
+  Altså er $f$ kontinuert i $p$. 
+\end{example}
+
+
+\begin{definition}[label=def:begrænset_funktion]{Begrænset funktion}{}
+  Antag $X \in \mathbb{R}$.
+  Så er en funktion $f:X \to \mathbb{R}$ begrænset, hvis der eksisterer $M \in \mathbb{R}$ sådan at $\abs{f(x)}\leq M$ for alle $x \in X$. 
+\end{definition}
+
+Det næste resultat viser, at en kontinuert funktion på et lukket interval er begrænset.
+
+\begin{theorem}[label=theo:kontinuert_begrænset]{Kontinuert funktion på lukket interval er begrænset}{}
+  Hvis en funktion $f:[a;b] \to \mathbb{R}$ er kontinuert, så er den begrænset.  
+\end{theorem}
+\begin{proof} 
   
+\end{proof}
+
+\begin{theorem}[label=theo:kontinuert_maks]{Kontinuert funktion på luklet interval har maksimum og minimum}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er kontinuert, og lad $\Vm(f)=\{ f(x):x \in [a;b] \} $.
+  Så eksisterer $p,\,q \in [a;b]$ sådan at $f(p)=\sup \Vm(f)$ og $f(q)=\inf \Vm(f)$.
+\end{theorem}
+\begin{proof} 
+  
+\end{proof}
+
+
+\begin{definition}[label=def:uniform_kontinuert]{Uniform kontinuert}{}
+  Antag $X \subseteq \mathbb{R}$ og $f:X \to \mathbb{R}$. 
+  Så er $f$ uniform kontinuert på $X$ hvis der for alle $\varepsilon >0$ eksisterer $\delta >0$ sådan at der for alle $p,\,q \in X$ gælder
+  \[
+  \abs{p-q} < \delta \implies \abs{f(p)-f(q)}<\varepsilon .  
+  \] 
 \end{definition}
 
