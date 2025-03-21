@@ -109,16 +109,16 @@ Derudover medfører vores definition, at en funktion er kontinuert i alle isoler
   Så er en funktion $f:X \to \mathbb{R}$ begrænset, hvis der eksisterer $M \in \mathbb{R}$ sådan at $\abs{f(x)}\leq M$ for alle $x \in X$. 
 \end{definition}
 
-Det næste resultat viser, at en kontinuert funktion på et lukket interval er begrænset.
+Det næste resultat viser, at en kontinuert funktion på et lukket interval er begrænset, og at dens værdimængde i øvrigt også er lukket.
 
-\begin{theorem}[label=theo:kontinuert_begrænset]{Kontinuert funktion på lukket interval er begrænset}{}
-  Hvis en funktion $f:[a;b] \to \mathbb{R}$ er kontinuert, så er den begrænset.  
+\begin{theorem}[label=theo:kontinuert_begrænset]{Værdimængde for kontinuert funktion på lukket interval er lukket og begrænset}{}
+  Hvis en funktion $f:[a;b] \to \mathbb{R}$ er kontinuert, så er $\Vm(f)=\{ f(x):x \in [a;b] \} $ lukket og begrænset.
 \end{theorem}
-\begin{proof} 
-  
-\end{proof}
 
-\begin{theorem}[label=theo:kontinuert_maks]{Kontinuert funktion på luklet interval har maksimum og minimum}{}
+Vi vælger her at udelade beviset, da det falder uden for den indførte teori i denne artikel.\footnote{Sætningen kan bevises via kompakthed og Heine-Borel-sætningen, se \cite{Rudin1976}, s. 40 og 89.
+Alternativt kan sætningen også bevises indirekte ved brug af følger og Bolzano-Weierstrass-sætningen, se \cite{Bartle2010}, s. 135.}
+
+\begin{theorem}[label=theo:kontinuert_maks]{Kontinuert funktion på lukket interval har maksimum og minimum}{}
   Antag $f:[a;b] \to \mathbb{R}$ er kontinuert, og lad $\Vm(f)=\{ f(x):x \in [a;b] \} $.
   Så eksisterer $p,\,q \in [a;b]$ sådan at $f(p)=\sup \Vm(f)$ og $f(q)=\inf \Vm(f)$.
 \end{theorem}
@@ -126,6 +126,7 @@ Det næste resultat viser, at en kontinuert funktion på et lukket interval er b
   
 \end{proof}
 
+Bemærk, at uniform kontinuitet også kaldes for ligelig kontinuitet.
 
 \begin{definition}[label=def:uniform_kontinuert]{Uniform kontinuert}{}
   Antag $X \subseteq \mathbb{R}$ og $f:X \to \mathbb{R}$. 
@@ -134,4 +135,21 @@ Det næste resultat viser, at en kontinuert funktion på et lukket interval er b
   \abs{p-q} < \delta \implies \abs{f(p)-f(q)}<\varepsilon .  
   \] 
 \end{definition}
+
+Fra definition \ref{def:kontinuert} ser vi, at hvis en funktion $f$ er kontinuert på en delmængde $X \subseteq \mathbb{R}$, så betyder det, at der ved \textit{hvert} punkt $p \in X$ for hver $\varepsilon >0$ kan findes en $\delta >0$ sådan at $\abs{x-p} <\delta $ medfører $\abs{f(x)-f(p)} < \varepsilon  $.
+Hvis $f$ derimod er uniform kontinuert på $X$, så eksisterer der for hver $\varepsilon >0$ en $\delta >0$ der opfylder betingelsen for \textit{alle} $p \in X$. 
+
+Definitionen på uniform kontinuitet giver os altså evnen til at kunne skelne mellem, om $\delta $ afhænger af punktet $p$ eller ej. 
+Med andre ord er kontinuitet en \textit{nødvendig} betingelse for uniform kontinuitet, hvor uniform kontinuitet er en \textit{tilstrækkelig} betingelse for kontinuitet.
+Bemærk også, at en funktion sagtens kan være kontinuert i et \textit{punkt}, hvor uniform kontinuitet kun er defineret på en \textit{mængde}.
+
+Det næste resultat viser, at på lukkede intervaller er kontinuerte funktioner også uniform kontinuerte.
+
+\begin{theorem}[label=theo:kontinuert_uniform]{Kontinuert funktion på lukket interval er uniform kontinuert}{}
+  Antag $f:[a;b]\to \mathbb{R}$ er kontinuert. 
+  Så er $f$ uniform kontinuert på $[a;b]$.
+\end{theorem}
+\begin{proof} 
+  \footnote{Beviset er baseret på \cite{Clausen1993}, s. 115-116.} 
+\end{proof}
 

@@ -254,51 +254,7 @@
 
 \section{Riemann-integralet}%
 \label{sec:Riemann-integralet}
-I denne sektion vil vi definere Riemann-integralet.\footnote{Sektionen er baseret på \cite{Abbott2002}, s. 183-194}
-Før vi gør dette, er vi nødt til at starte med nogle definitioner, vi har brug for.
-\begin{definition}{Inddeling}{}
-  Antag $a,\;b \in \mathbb{R}$ sådan at $a <b$.
-  Ved en inddeling $P$ af $[a;b]$ forstår vi en endelig mængde $\{x_0,\dotsc, x_n\}$, hvor
-  \[
-  a=x_0<x_1<\cdots<x_n=b
-  \] 
-  og vi skriver 
-  \[
-  \Delta x_i=x_i-x_{i-1} \quad (i=1,\ldots ,n)
-  \]  
-\end{definition}
-Med en inddeling kan vi dele intervallet $[a;b]$ op i $n$ delintervaller, hvor det $i$'te delinterval har længden $\Delta x_i$:
-\[
-[a;b]=[x_0;x_1] \cup [x_1;x_2]\cup \cdots \cup [x _{n-1};x_n]
-\] 
-Vi vil nu definere over- og undersummen af en funktion med hensyn til en given inddeling.
-
-\begin{definition}{Over- og undersum}{}
-  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion, og $P=\{x_0,\ldots, x_n\}$ er en inddeling af $[a;b]$. 
-  Lad 
-  \[
-  M_i=\sup \{ f(x):x \in [x _{x_{i-1}};x_i] \} \quad{\text{og}} \quad m_i=\inf \{ f(x):x \in [x _{x_{i-1}};x_i] \}.
-  \] 
-  Så er oversummen af $f$ med hensyn til $P$ defineret ved
-  \[
-  U(f,P)=\sum_{i=1}^{n} M_i \Delta x_i.
-  \] 
-  Tilsvarende er undersummen af $f$ med hensyn til $P$ defineret ved
-  \[
-  L(f,P)=\sum_{i=1}^{n} m_i \Delta x_i.
-  \] 
-\end{definition}
-Skriv eksistens
-
-\begin{theorem}{Uligheder med over- og undersummer}{}
-  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P_1$, $P_2$ er inddelinger af $[a;b]$ sådan at $P_1 \subseteq P_2$. Så gælder
-  \[
-  L(f,P_1)\leq L(f,P_2) \leq U(f,P_2) \leq U(f,P_1)
-  \] 
-\end{theorem}
-\begin{proof} 
-  j
-\end{proof}
+\input{integral.tex}
 
 \section{Numerisk integration}%
 \label{sec:Numerisk integration}

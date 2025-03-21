@@ -217,13 +217,13 @@ FUNCTION {bbl.edby}
 { "edited by" }
 
 FUNCTION {bbl.edition}
-{ "ed." }
+{ "udg." }
 
 FUNCTION {bbl.volume}
 { "vol." }
 
 FUNCTION {bbl.of}
-{ "of" }
+{ "af" }
 
 FUNCTION {bbl.number}
 { "no." }
