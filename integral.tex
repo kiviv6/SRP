@@ -2,6 +2,9 @@ I dette afsnit vil vi definere Riemann-integralet.\footnote{Afsnittet er primær
 Det skal dog bemærkes, at vi ikke benytter Riemanns originale definition, men derimod en videreudvikling af den franske matematiker Darboux.
 Det kan bevises, at de to definitioner på integralet er ækvivalente.\footnote{\cite{Bartle2010}, s. 231-232.}
 
+\subsection{Inddelinger samt over- og undersummer}%
+  \label{sub:Inddelinger samt over- og undersummer}
+
 Vi starter med nogle grundlæggende definitioner, vi har brug for til at definere integralet.
 \begin{definition}{Inddeling}{}
   Antag $a,\;b \in \mathbb{R}$ sådan at $a <b$.
@@ -36,12 +39,12 @@ Vi vil nu definere over- og undersummen af en funktion med hensyn til en given i
   \] 
 \end{definition}
 
-Vi kræver i definitionen, at $f(x)$ er begrænset, da vi så fra sætning \ref{theo:supremum-egenskab} ved, at $M_i$ og $m_i$ eksisterer. 
+Vi kræver i definitionen, at $f(x)$ er begrænset, da vi så fra supremum- og infimum-egenskaben (sætning \ref{theo:supremum-egenskab} og \ref{theo:infimum-egenskab}) ved, at $M_i$ og $m_i$ eksisterer. 
 
 \begin{theorem}[label=theo:ulighed_overundersum]{Uligheder med over- og undersummer}{}
-  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P$, $P'$ er inddelinger af $[a;b]$ sådan at $P \subseteq P'$. Så gælder
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P$ og $P'$ er inddelinger af $[a;b]$ sådan at $P \subseteq P'$. Så gælder
   \[
-  L(f,P)\leq L(f,P') \text{ og }  U(f,P') \leq U(f,P).
+  L(f,P)\leq L(f,P') \leq  U(f,P') \leq U(f,P).
   \] 
 \end{theorem}
 \begin{proof} 
@@ -81,10 +84,12 @@ Vi får så uligheden
   &\leq \sum_{i=1}^{m} M' _{k+i} \Delta x _{k+i}.
   \end{split}
   \end{equation*}
-  Det følger, at $U(f,P) \geq U(f,P')$
+  Det følger, at $U(f,P) \geq U(f,P')$.
+
+  Siden infimum af en mængde altid er mindre end eller lig med supremum af mængden, så må der til sidst også gælde, at $L(f,P')\leq U(f,P')$.
 \end{proof}
 
-Beviset for sætning \ref{theo:ulighed_overundersum} kan godt virke uoverskueligt grundet notationen, men \cref{fig:ulighed_overundersum} tydeliggør i høj grad ideen i beviset.
+Beviset for sætning \ref{theo:ulighed_overundersum} kan i første omgang godt virke uoverskueligt grundet notationen, men \cref{fig:ulighed_overundersum} tydeliggør i høj grad ideen i beviset.
 
 \begin{figure}[H]
 \begin{center}
@@ -113,4 +118,29 @@ Beviset for sætning \ref{theo:ulighed_overundersum} kan godt virke uoverskuelig
   \caption{Ideen i beviset af sætning \ref{theo:ulighed_overundersum}}%
 \label{fig:ulighed_overundersum}
 \end{figure}
+
+Det næste resultat viser, at der for en reel funktion med definitionsmængden $[a;b]$ gælder, at undersummen mht. enhver inddeling af $[a;b]$ altid er mindre end eller lig med oversummen mht. enhver inddeling af $[a;b]$.
+
+\begin{theorem}[label=theo:undersum_leq_oversum]{Undersum $\leq $ oversum }{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P_1 $ og $P_2$ er inddelinger af $[a;b]$.
+  Så gælder
+  \[
+  L(f,P_1) \leq U(f,P_2).
+  \] 
+\end{theorem}
+\begin{proof} 
+  Lad $P_3=P_1 \cup P_2$.
+  Så har vi fra sætning \ref{theo:ulighed_overundersum}, at 
+  \begin{equation*}
+  \begin{split}
+    L(f,P_1) &\leq L(f,P_3) \\
+    &\leq U(f,P_3)\\
+    &\leq U(f,P_2).
+  \end{split}
+  \end{equation*}
+\end{proof}
+
+\subsection{Integrabilitet}%
+  \label{sub:Integrabilitet}
+
 
