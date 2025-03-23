@@ -143,13 +143,86 @@ Definitionen på uniform kontinuitet giver os altså evnen til at kunne skelne m
 Med andre ord er kontinuitet en \textit{nødvendig} betingelse for uniform kontinuitet, hvor uniform kontinuitet er en \textit{tilstrækkelig} betingelse for kontinuitet.
 Bemærk også, at en funktion sagtens kan være kontinuert i et \textit{punkt}, hvor uniform kontinuitet kun er defineret på en \textit{mængde}.
 
+Vi vil nu bevise, at hvis en funktion er uniform kontinuert på to lukkede intervaller, så er den uniform kontinuert på foreningsmængden af de to intervaller.
+
+\begin{theorem}[label=theo:uniform_fælles]{Uniform kontinuitet på foreningsmængde af lukkede intervaller, som funktion er uniform kontinuert på}{}
+  Antag $f:[a;b]\to \mathbb{R}$, $[c;d] \subseteq [a;b]$, og $[e;f]\subseteq [a;b]$.
+  Hvis $f$ er uniform kontinuert på intervallerne $[c;d]$ og $[e;f]$, så er $f$ uniform kontinuert på $[c;d] \cup [e;f]$.
+\end{theorem}
+\begin{proof} 
+  Lad $\varepsilon >0$ være givet. 
+
+  Betragt først tilfældet, hvor $[c;d]\cap [e;f]\neq \emptyset $.
+  Siden $f$ er uniform kontinuert på $[c;d]$, har vi, at der eksisterer $\delta _1>0$ sådan at når $p, q \in [c;d]$ og $\abs{p-q} <\delta _2$, så gælder $\abs{f(p)-f(q)} < \frac{\varepsilon }{2} $. 
+  Tilsvarende eksisterer $\delta _2>0$, sådan at når $p, q \in [e;f]$ og $\abs{p-q} < \delta _2 $, så gælder $\abs{f(p)-f(q)} <\frac{\varepsilon }{2}$. 
+  Lad $\delta =\min (\delta _1, \delta _2)$, og $p, q \in [c;d] \cup [e;f]$.
+
+  \noindent Hvis både $p$ og $q$ er i det samme interval, er det klart, at når $\abs{p-q}<\delta  $, så er $\abs{f(p)-f(q)} <\frac{\varepsilon }{2} < \varepsilon  $. 
+
+  \noindent Hvis vi derimod har, at $p \in [c;d]$ og $q \in [e;f]$ sådan at $p, q \not\in [c;d] \cup [e;f]$, så eksisterer $s \in [c;d] \cap [e;f]$ sådan at når $\abs{p-q} <\delta $, så gælder
+  \begin{equation*}
+  \begin{split}
+ \abs{f(p)-f(q)} &\leq \abs{f(p)-f(s)} + \abs{f(q)-f(s)} \\
+  &< \frac{\varepsilon }{2} + \frac{\varepsilon }{2} \\
+  &=\varepsilon.
+  \end{split}
+  \end{equation*}
+  Altså er $f$ uniform kontinuert på $[c;d] \cup [e;f]$, hvis $[c;d] \cap [e;f]\neq \emptyset $.
+
+  Antag nu, at $[c;d] \cap [e;f] = \emptyset $.
+Siden $f$ er uniform kontinuert på $[c;d]$, eksisterer der $\delta _1>0$ sådan at når $p, q \in [c;d]$ og $\abs{p-q} <\delta _2$, så gælder $\abs{f(p)-f(q)} < \varepsilon$.
+Tilsvarende eksisterer $\delta _2>0$, sådan at når $p, q \in [e;f]$ og $\abs{p-q} < \delta _2 $, så gælder $\abs{f(p)-f(q)} <\varepsilon$. 
+  Da intervallerne $[c;d]$ og $[e;f]$ er lukkede, så er afstanden mellem dem ikke nul, og der eksisterer $\delta _3>0$, sådan at $\abs{x-y}\geq \delta _3$ for alle $x \in [c;d]$ og $y \in [e;f]$.
+
+  \noindent Lad $\delta = \min (\delta _1, \delta _2, \delta _3)$ og $p, q \in [c;d] \cup [e;f]$.
+  Når $\abs{p-q} <\delta $ har vi så, at både $p$ og $q$ må være i enten $[c;d]$ eller $[e;f]$.
+  Så gælder $\abs{f(p)-f(q)} <\varepsilon $.
+  Altså er $f$ uniform kontinuert på $[c;d] \cup [e;f]$. 
+
+
+\end{proof}
+
 Det næste resultat viser, at på lukkede intervaller er kontinuerte funktioner også uniform kontinuerte.
+Med andre ord er begreberne kontinuitet og uniform kontinuitet altså ækvivalente på lukkede intervaller (husk, at uniform kontinuerte funktioner altid er kontinuerte).
 
 \begin{theorem}[label=theo:kontinuert_uniform]{Kontinuert funktion på lukket interval er uniform kontinuert}{}
   Antag $f:[a;b]\to \mathbb{R}$ er kontinuert. 
   Så er $f$ uniform kontinuert på $[a;b]$.
 \end{theorem}
 \begin{proof} 
-  \footnote{Beviset er baseret på \cite{Clausen1993}, s. 115-116.} 
+  \footnote{Beviset er delvist baseret på \cite{Clausen1993}, s. 115-116.} 
+Lad $\varepsilon >0$ være givet. 
+  Siden $f$ er kontinuert i $a$, så eksisterer der $\delta_0$, hvor $0<\delta_0 \leq b$, sådan at når $x \in [a;a+\delta_0 ]$, så gælder $\abs{f(x)-f(a)} < \frac{\varepsilon }{2} $.
+  Fra sætning \ref{theo:kontinuert_maks} har vi så, at der eksisterer $\alpha , \beta \in [a;a+\delta_0 ]$, sådan at
+  \[
+  f(\alpha )=\sup \{ f(x):x \in [a;a+\delta_0 ] \} \text{ og } f(\beta )= \inf \{ f(x):x \in [a;a+\delta_0 ] \}.
+  \] 
+  For alle $p, q \in [a;a+\delta_0 ]$ har vi så, at
+  \begin{equation*}
+  \begin{split}
+    \abs{f(p)-f(q)} &\leq \abs{f(\alpha )-f(\beta )} \\
+    &\leq \abs{f(\alpha )-f(a)} + \abs{f(\beta ) - f(a)} \\
+    &<\frac{\varepsilon }{2} + \frac{\varepsilon }{2}\\
+    &=\varepsilon.
+  \end{split}
+  \end{equation*}
+  Altså er $f$ uniform kontinuert på $[a;a+\delta_0 ]$.
+
+  Vi har, at $f$ ligeledes er kontinuert i $a + \delta _0$, og med lignende ræsonnement som før, må der så gælde, at der eksisterer $\delta _1$, hvor $0<\delta _1 \leq b-(a+\delta _0)$, sådan at $f$ er uniform kontinuert på $[a+\delta _0-\delta_1;a+\delta_0 + \delta_1]$. 
+  Vi påstår, at intervallet $[a;b]$ kan overdækkes med et endeligt antal af disse intervaller. 
+  Med andre ord påstår vi, at der eksisterer $\delta _0, \ldots , \delta _n$ sådan, at 
+  \[
+  [a;b]=[a;a+\delta_0 ] \cup [a+\delta _0-\delta_1;a+\delta_0 + \delta_1] \cup \cdots \cup [a+\delta _0+\cdots +\delta _{n-1}-\delta _n;a+\delta _0+\cdots +\delta _{n}],
+  \] 
+  hvor $f$ er uniform kontinuert i hvert af intervallerne på højre side af lighedstegnet. 
+
+  Antag nemlig, at $[a;b]$ ikke kan dækkes af endeligt mange af disse intervaller, og lad $U$ være intervallet, som kan overdækkes med et endeligt antal af de beskrevne intervaller, med venstre endepunkt i $a$. 
+Så er $U$ ikke tom, og $U$ er opad begrænset med $b$ som overtal. 
+  Fra supremum-egenskaben (sætning \ref{theo:supremum-egenskab}) følger det, at $c=\sup U<b$ eksisterer. 
+  Imidlertid er $f$ dog kontinuert i $c$, og vi har igen med lignende ræsonnement som før, at der eksisterer $\delta _c>0$ sådan at $f$ er uniform kontinuert i $[c-\delta _c;c+\delta _c]$. 
+  Der opstår da modstrid, da vi antog, at $c$ er supremum for $U$. 
+
+Således kan $[a;b]$ overdækkes af et endeligt antal intervaller, hvorpå $f$ er uniform kontinuert.
+  Det følger så induktivt fra sætning \ref{theo:uniform_fælles}, at $f$ er uniform kontinuert på $[a;b]$.
 \end{proof}
 

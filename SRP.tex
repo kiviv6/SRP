@@ -23,6 +23,7 @@
 \renewcommand\theadfont{\bfseries}
 \usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
 \usepackage{setspace} %%Enables \doublespacing command for double linespacing
+\usepackage{pdfpages}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SELF MADE COLORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -223,7 +224,8 @@
 \date{\today}
 
 \begin{document}
-\include{title.tex}
+%\include{title.tex}
+\includepdf{fig/SRP2025_3b22_MinruiKevinZhou.pdf}
 \begin{abstract}
   Dette er mit resumé.
 \end{abstract}

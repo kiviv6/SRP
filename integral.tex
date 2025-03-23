@@ -92,14 +92,14 @@ Beviset for sætning \ref{theo:ulighed_overundersum} kan godt virke uoverskuelig
 \begin{axis}[xmin=0, xmax=3, ymin=-0.5, ymax=8, axis lines=middle,
   xlabel=$x$,ylabel=$y$,
   xtick={0.5,1.2,2.5},
-  xticklabels={$x _{j-1}=x'_{k}$, $x'_{k+i}$, $x_j=x'_{k+m}$},
+  xticklabels={$x _{j-1}=x'_{k}$, $x'_{k+1}$, $x_j=x'_{k+m}$},
   xticklabel style={anchor=north, font=\footnotesize},
   ytick={6.3824,5},
-  yticklabels={$m'_{k+i}$, $m_j$},
+  yticklabels={$m'_{k+1}$, $m_j$},
   every major tick/.append style={thick, major tick length=5pt, black},
   yticklabel style={anchor=east, font=\footnotesize}
   ]
-  \addplot[color=red, domain=-1:5, samples=100, thick]{-(x-2)^4 - (x-2)^3 + 2*(x-2)^2+5} node[left, pos=0.15] {$f$};
+  \addplot[color=red, domain=0:3, samples=100, thick]{-(x-2)^4 - (x-2)^3 + 2*(x-2)^2+5} node[above=5pt, pos=0.7] {$f$};
   \filldraw[gray!20] (axis cs:0.5,0.02) rectangle (axis cs:2.5,5);
   \filldraw[cyan!20] (axis cs:0.5,5) rectangle (axis cs:1.2,6.3824);
   \draw[color=blue, dashed] (axis cs:0.5,0) -- (axis cs:0.5,6.3824);
