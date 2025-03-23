@@ -229,6 +229,66 @@ For at se, hvorfor det er tilfældet, lad $p \in B'$.
 
 Mere generelt gælder der faktisk, at hvis supremum og/eller infimum eksisterer for en delmængde af $\mathbb{R}$, så er de fortætningspunkter af mængden.
 
+\begin{theorem}[label=theo:sup_fortætning]{Supremum og infimum er fortætningspunkter}{}
+  Antag $A \subseteq \mathbb{R}$ og $A \neq \emptyset $.
+  Hvis $A$ er opad begrænset, så er $\sup A$ et fortætningspunkt af $A$.
+  Hvis $A$ er nedad begræset, så er $\inf B$ et fortætningspunkt af $A$. 
+\end{theorem}
+\begin{proof} 
+  Antag, at $A$ er opad begrænset. 
+  Så eksisterer $\alpha =\sup A$ (sætning \ref{theo:supremum-egenskab}).
+  Antag, at $\alpha $ ikke er et fortætningspunkt af $A$. 
+  Så eksisterer en omegn $N_r(\alpha )$ sådan at $N_r(\alpha ) \cap A=\emptyset $. 
+  Men så er $\alpha - r$ et overtal for $A$, hvilket fører til modstrid.
+  Altså må $\alpha $ være et fortætningspunkt af $A$. 
+
+På tilsvarende måde kan man vise, at hvis $A$ er nedad begrænset, så er $\inf A$ et fortætningspunkt af $A$.  
+\end{proof}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \centering
+    \filldraw[black] (0,0) circle (2pt);
+    \filldraw[black] (2,0) circle (2pt) node[below=3pt]{$\alpha $};
+    \filldraw[cyan] (-7,0) circle (2pt);
+    \filldraw[cyan] (-6.9,0) circle (2pt);
+    \filldraw[cyan] (-6.8,0) circle (2pt);
+    \filldraw[cyan] (-6.5,0) circle (2pt);
+    \filldraw[cyan] (-5,0) circle (2pt);
+    \filldraw[cyan] (-4.9,0) circle (2pt);
+    \filldraw[cyan] (-4.8,0) circle (2pt);
+    \filldraw[cyan] (-4.7,0) circle (2pt);
+    \filldraw[cyan] (-4.6,0) circle (2pt);
+    \filldraw[cyan] (-4.5,0) circle (2pt);
+    \filldraw[cyan] (-3,0) circle (2pt);
+    \filldraw[cyan] (-2,0) circle (2pt);
+    \filldraw[cyan] (-2.2,0) circle (2pt);
+    \filldraw[cyan] (-1.9,0) circle (2pt);
+    \filldraw[cyan] (-1.8,0) circle (2pt);
+    \filldraw[cyan] (-1.75,0) circle (2pt);
+    \filldraw[cyan] (-1.65,0) circle (2pt);
+    \filldraw[cyan] (-1.6,0) circle (2pt);
+    \filldraw[cyan] (-1.4,0) circle (2pt);
+    \filldraw[cyan] (-1.3,0) circle (2pt);
+    \filldraw[cyan] (-0.5,0) circle (2pt);
+    \filldraw[cyan] (-0.7,0) circle (2pt);
+    \draw[cyan] (-3.5,-1) node {$A$};
+    \draw[cyan, ->] (-3.7,-0.8) -- (-6.5,-0.2);
+    \draw[cyan, ->] (-3.5,-0.8) -- (-4.5,-0.2);
+    \draw[cyan, ->] (-3.3,-0.8) -- (-1.8,-0.2);
+    \draw (-7,0) -- (6,0);
+    \draw [dashed] (4,0.3) -- (4,-0.3) node[align=left,anchor=north]{$\alpha +r$};
+    \draw [dashed] (0,0.3) -- (0,-0.3) node[anchor=north]{$\alpha -r$};
+    \draw [decorate, decoration = {brace,amplitude=5pt}, thick] (0,0.5) -- (4,0.5) node[midway,yshift=3.5ex]{$N_r(\alpha )$};
+    %\draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4ex}] (1,0) -- (5,0) node[midway,yshift=-3em]{Konvergenzbereich};
+\end{tikzpicture}
+\end{center}
+  \caption{Antagelsen om, at $\alpha $ ikke er et fortætningspunkt fører til modstrid }
+\label{fig:sup_fortætning}
+\end{figure}
+
+
 Faktummet, at et fortætningspunkt af en mængde ikke nødvendigvis er et element i mængden (hvilket vi så i eksempel \ref{exa:fortætningspunkter}), motiverer den næste definition.
 
 \begin{definition}[label=def:lukket]{Lukket mængde }{}

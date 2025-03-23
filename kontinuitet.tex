@@ -123,10 +123,13 @@ Alternativt kan sætningen også bevises indirekte ved brug af følger og Bolzan
   Så eksisterer $p,\,q \in [a;b]$ sådan at $f(p)=\sup \Vm(f)$ og $f(q)=\inf \Vm(f)$.
 \end{theorem}
 \begin{proof} 
-  
+  Fra sætning \ref{theo:kontinuert_begrænset} har vi, at $\Vm (f)$ er lukket og begrænset. 
+  Det følger så fra sætning \ref{theo:sup_fortætning}, at $\sup \Vm (f)$ og $\inf \Vm (f)$ er fortætningspunkter af $\Vm (f)$.
+  Siden $\Vm (f)$ er lukket, indeholder den alle sine fortætningspunkter. 
+  Således eksisterer $p,\,q \in [a;b]$ sådan at $f(p)=\sup \Vm(f)$ og $f(q)=\inf \Vm(f)$.
 \end{proof}
 
-Bemærk, at uniform kontinuitet også kaldes for ligelig kontinuitet.
+Vi definerer nu begrebet uniform kontinuitet, som også kaldes for ligelig kontinuitet.
 
 \begin{definition}[label=def:uniform_kontinuert]{Uniform kontinuert}{}
   Antag $X \subseteq \mathbb{R}$ og $f:X \to \mathbb{R}$. 
@@ -146,41 +149,74 @@ Bemærk også, at en funktion sagtens kan være kontinuert i et \textit{punkt}, 
 Vi vil nu bevise, at hvis en funktion er uniform kontinuert på to lukkede intervaller, så er den uniform kontinuert på foreningsmængden af de to intervaller.
 
 \begin{theorem}[label=theo:uniform_fælles]{Uniform kontinuitet på foreningsmængde af lukkede intervaller, som funktion er uniform kontinuert på}{}
-  Antag $f:[a;b]\to \mathbb{R}$, $[c;d] \subseteq [a;b]$, og $[e;f]\subseteq [a;b]$.
-  Hvis $f$ er uniform kontinuert på intervallerne $[c;d]$ og $[e;f]$, så er $f$ uniform kontinuert på $[c;d] \cup [e;f]$.
+  Antag $g:[a;b]\to \mathbb{R}$, $[c;d] \subseteq [a;b]$, og $[e;f]\subseteq [a;b]$.
+  Hvis $g$ er uniform kontinuert på intervallerne $[c;d]$ og $[e;f]$, så er $g$ uniform kontinuert på $[c;d] \cup [e;f]$.
 \end{theorem}
 \begin{proof} 
   Lad $\varepsilon >0$ være givet. 
 
   Betragt først tilfældet, hvor $[c;d]\cap [e;f]\neq \emptyset $.
-  Siden $f$ er uniform kontinuert på $[c;d]$, har vi, at der eksisterer $\delta _1>0$ sådan at når $p, q \in [c;d]$ og $\abs{p-q} <\delta _2$, så gælder $\abs{f(p)-f(q)} < \frac{\varepsilon }{2} $. 
-  Tilsvarende eksisterer $\delta _2>0$, sådan at når $p, q \in [e;f]$ og $\abs{p-q} < \delta _2 $, så gælder $\abs{f(p)-f(q)} <\frac{\varepsilon }{2}$. 
+  Siden $g$ er uniform kontinuert på $[c;d]$, har vi, at der eksisterer $\delta _1>0$ sådan at når $p, q \in [c;d]$ og $\abs{p-q} <\delta _2$, så gælder $\abs{g(p)-g(q)} < \frac{\varepsilon }{2} $. 
+  Tilsvarende eksisterer $\delta _2>0$, sådan at når $p, q \in [e;f]$ og $\abs{p-q} < \delta _2 $, så gælder $\abs{g(p)-g(q)} <\frac{\varepsilon }{2}$. 
   Lad $\delta =\min (\delta _1, \delta _2)$, og $p, q \in [c;d] \cup [e;f]$.
 
-  \noindent Hvis både $p$ og $q$ er i det samme interval, er det klart, at når $\abs{p-q}<\delta  $, så er $\abs{f(p)-f(q)} <\frac{\varepsilon }{2} < \varepsilon  $. 
+  \noindent Hvis både $p$ og $q$ tilhører det samme interval, er det klart, at når $\abs{p-q}<\delta  $, så er $\abs{g(p)-g(q)} <\frac{\varepsilon }{2} < \varepsilon  $. 
 
-  \noindent Hvis vi derimod har, at $p \in [c;d]$ og $q \in [e;f]$ sådan at $p, q \not\in [c;d] \cup [e;f]$, så eksisterer $s \in [c;d] \cap [e;f]$ sådan at når $\abs{p-q} <\delta $, så gælder
+  \noindent Hvis vi derimod har, at $p \in [c;d]$ og $q \in [e;f]$ sådan at $p, q \not\in [c;d] \cup [e;f]$, så eksisterer $s \in [c;d] \cap [e;f]$ sådan at når $\abs{p-q} <\delta $, så er $\abs{p-s} <\delta _1$ og $\abs{q-s} <\delta _2$.
+  Der gælder derfor
   \begin{equation*}
   \begin{split}
- \abs{f(p)-f(q)} &\leq \abs{f(p)-f(s)} + \abs{f(q)-f(s)} \\
+    \abs{g(p)-g(q)} &= \abs{g(p)-g(s)} + \abs{g(q)-g(s)} \\
   &< \frac{\varepsilon }{2} + \frac{\varepsilon }{2} \\
   &=\varepsilon.
   \end{split}
   \end{equation*}
-  Altså er $f$ uniform kontinuert på $[c;d] \cup [e;f]$, hvis $[c;d] \cap [e;f]\neq \emptyset $.
+  Altså er $g$ uniform kontinuert på $[c;d] \cup [e;f]$, hvis $[c;d] \cap [e;f]\neq \emptyset $.
 
   Antag nu, at $[c;d] \cap [e;f] = \emptyset $.
-Siden $f$ er uniform kontinuert på $[c;d]$, eksisterer der $\delta _1>0$ sådan at når $p, q \in [c;d]$ og $\abs{p-q} <\delta _2$, så gælder $\abs{f(p)-f(q)} < \varepsilon$.
-Tilsvarende eksisterer $\delta _2>0$, sådan at når $p, q \in [e;f]$ og $\abs{p-q} < \delta _2 $, så gælder $\abs{f(p)-f(q)} <\varepsilon$. 
+Siden $g$ er uniform kontinuert på $[c;d]$, eksisterer der $\delta _1>0$ sådan at når $p, q \in [c;d]$ og $\abs{p-q} <\delta _2$, så gælder $\abs{g(p)-g(q)} < \varepsilon$.
+Tilsvarende eksisterer $\delta _2>0$, sådan at når $p, q \in [e;f]$ og $\abs{p-q} < \delta _2 $, så gælder $\abs{g(p)-g(q)} <\varepsilon$. 
   Da intervallerne $[c;d]$ og $[e;f]$ er lukkede, så er afstanden mellem dem ikke nul, og der eksisterer $\delta _3>0$, sådan at $\abs{x-y}\geq \delta _3$ for alle $x \in [c;d]$ og $y \in [e;f]$.
 
   \noindent Lad $\delta = \min (\delta _1, \delta _2, \delta _3)$ og $p, q \in [c;d] \cup [e;f]$.
   Når $\abs{p-q} <\delta $ har vi så, at både $p$ og $q$ må være i enten $[c;d]$ eller $[e;f]$.
-  Så gælder $\abs{f(p)-f(q)} <\varepsilon $.
-  Altså er $f$ uniform kontinuert på $[c;d] \cup [e;f]$. 
-
-
+  Så gælder $\abs{g(p)-g(q)} <\varepsilon $.
+  Altså er $g$ uniform kontinuert på $[c;d] \cup [e;f]$. 
 \end{proof}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=1.6, transform shape]
+\begin{axis}[xmin=-0.2, xmax=3, ymin=-2.2, ymax=10, axis lines=middle,
+  xlabel=$x$,ylabel=$y$,
+  xtick={0.2,1,1.8,2.8},
+  xticklabels={$c$, $e$, $d$, $f$},
+  xticklabel style={anchor=north, font=\footnotesize},
+  ytick={5.8064,5.1449,7.8125,8.8064,2.8064},
+  yticklabels={$g(s)$, $g(p)$, $g(q)$,$g(s)+\frac{\varepsilon }{2}$, $g(s)-\frac{\varepsilon }{2}$},
+  every major tick/.append style={thick, major tick length=5pt, black},
+  yticklabel style={anchor=east, font=\footnotesize}
+  ]
+  \addplot[color=red, domain=0:3, samples=100, thick]{-(x-1)^4 + (x-1)^3 + 2*(x-1)^2+5} node[above=5pt, pos=0.7] {$g$};
+  \filldraw[black] (axis cs:0.7,0) circle (2pt) node[below=3pt, font=\footnotesize]{$p$};
+  \filldraw[black] (axis cs:1.6,0) circle (2pt) node[below=3pt, font=\footnotesize]{$s$};
+  \filldraw[black] (axis cs:2.5,0) circle (2pt) node[below=3pt, font=\footnotesize]{$q$};
+  \draw[->] (axis cs:0.7,-1.3) -- (axis cs:2.5,-1.3);
+  \draw (axis cs:1.6,-1.3) node[below, font=\footnotesize] {$\abs{p-q} < \delta $};
+  \draw[->] (axis cs:2.5,-1.3) -- (axis cs:0.7,-1.3);
+  \draw[color=blue, dashed] (axis cs:1.6,0) -- (axis cs:1.6,5.8064);
+  \draw[color=blue, dashed] (axis cs:0,5.8064) -- (axis cs:1.6,5.8064);
+  \draw[color=gray, dashed] (axis cs:0.7,0) -- (axis cs:0.7,5.1449);
+  \draw[color=gray, dashed] (axis cs:0,5.1449) -- (axis cs:0.7,5.1449);
+  \draw[color=gray, dashed] (axis cs:2.5,0) -- (axis cs:2.5,7.8125);
+  \draw[color=gray, dashed] (axis cs:0,7.8125) -- (axis cs:2.5,7.8125);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+  \caption{Første del af beviset af sætning \ref{theo:ulighed_overundersum}}%
+\label{fig:ulighed_overundersum}
+\end{figure}
+
 
 Det næste resultat viser, at på lukkede intervaller er kontinuerte funktioner også uniform kontinuerte.
 Med andre ord er begreberne kontinuitet og uniform kontinuitet altså ækvivalente på lukkede intervaller (husk, at uniform kontinuerte funktioner altid er kontinuerte).
