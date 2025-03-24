@@ -10,16 +10,16 @@ Vi starter med nogle grundlæggende definitioner, vi har brug for til at definer
   Antag $a,\;b \in \mathbb{R}$ sådan at $a <b$.
   Ved en inddeling $P$ af $[a;b]$ forstår vi en endelig mængde $\{x_0,\dotsc, x_n\}$, hvor
   \[
-  a=x_0<x_1<\cdots<x_n=b
+  a=x_0<x_1<\cdots<x_n=b,
   \] 
   og vi skriver 
   \[
-  \Delta x_i=x_i-x_{i-1} \quad (i=1,\ldots ,n)
+  \Delta x_i=x_i-x_{i-1} \quad (i=1,\ldots ,n).
   \]  
 \end{definition}
 Med en inddeling kan vi dele intervallet $[a;b]$ op i $n$ delintervaller, hvor det $i$'te delinterval har længden $\Delta x_i$:
 \[
-[a;b]=[x_0;x_1] \cup [x_1;x_2]\cup \cdots \cup [x _{n-1};x_n]
+[a;b]=[x_0;x_1] \cup [x_1;x_2]\cup \cdots \cup [x _{n-1};x_n].
 \] 
 Vi vil nu definere over- og undersummen af en funktion med hensyn til en given inddeling.
 
@@ -31,11 +31,11 @@ Vi vil nu definere over- og undersummen af en funktion med hensyn til en given i
   \] 
   Så er oversummen af $f$ med hensyn til $P$ defineret ved
   \[
-  U(f,P)=\sum_{i=1}^{n} M_i \Delta x_i.
+  U(f, P)=\sum_{i=1}^{n} M_i \Delta x_i.
   \] 
   Tilsvarende er undersummen af $f$ med hensyn til $P$ defineret ved
   \[
-  L(f,P)=\sum_{i=1}^{n} m_i \Delta x_i.
+  L(f, P)=\sum_{i=1}^{n} m_i \Delta x_i.
   \] 
 \end{definition}
 
@@ -44,7 +44,7 @@ Vi kræver i definitionen, at $f(x)$ er begrænset, da vi så fra supremum- og i
 \begin{theorem}[label=theo:ulighed_overundersum]{Uligheder med over- og undersummer}{}
   Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P$ og $P'$ er inddelinger af $[a;b]$ sådan at $P \subseteq P'$. Så gælder
   \[
-  L(f,P)\leq L(f,P') \leq  U(f,P') \leq U(f,P).
+  L(f, P)\leq L(f, P') \leq  U(f, P') \leq U(f, P).
   \] 
 \end{theorem}
 \begin{proof} 
@@ -67,7 +67,7 @@ Vi får så uligheden
   &\leq \sum_{i=1}^{m} m' _{k+i} \Delta x _{k+i}.
 \end{split}
 \end{equation*}
-  Det følger, at $L(f,P) \leq L(f,P')$. 
+  Det følger, at $L(f, P) \leq L(f, P')$. 
 
   Tilsvarende har vi for hver $i=1,\ldots, m$ også, at
   \begin{equation*}
@@ -84,12 +84,13 @@ Vi får så uligheden
   &\leq \sum_{i=1}^{m} M' _{k+i} \Delta x _{k+i}.
   \end{split}
   \end{equation*}
-  Det følger, at $U(f,P) \geq U(f,P')$.
+  Det følger, at $U(f, P) \geq U(f, P')$.
 
-  Siden infimum af en mængde altid er mindre end eller lig med supremum af mængden, så må der til sidst også gælde, at $L(f,P')\leq U(f,P')$.
+  Siden infimum af en mængde altid er mindre end eller lig med supremum af mængden, så må der til sidst også gælde, at $L(f, P')\leq U(f, P')$.
 \end{proof}
 
-Beviset for sætning \ref{theo:ulighed_overundersum} kan i første omgang godt virke uoverskueligt grundet notationen, men \cref{fig:ulighed_overundersum} tydeliggør i høj grad ideen i beviset.
+ Sætning \ref{theo:ulighed_overundersum} fortæller, at når vi tilføjer ekstra punkter til en inddeling så bliver undersummen potentielt større, og oversummen bliver potentielt mindre.
+ Figur \ref{fig:ulighed_overundersum} tydeliggør i høj grad ideen i beviset.
 
 \begin{figure}[H]
 \begin{center}
@@ -125,7 +126,7 @@ Det næste resultat viser, at der for en reel funktion med definitionsmængden $
   Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion og $P_1 $ og $P_2$ er inddelinger af $[a;b]$.
   Så gælder
   \[
-  L(f,P_1) \leq U(f,P_2).
+  L(f, P_1) \leq U(f, P_2).
   \] 
 \end{theorem}
 \begin{proof} 
@@ -133,9 +134,9 @@ Det næste resultat viser, at der for en reel funktion med definitionsmængden $
   Så har vi fra sætning \ref{theo:ulighed_overundersum}, at 
   \begin{equation*}
   \begin{split}
-    L(f,P_1) &\leq L(f,P_3) \\
-    &\leq U(f,P_3)\\
-    &\leq U(f,P_2).
+    L(f, P_1) &\leq L(f, P_3) \\
+    &\leq U(f, P_3)\\
+    &\leq U(f, P_2).
   \end{split}
   \end{equation*}
 \end{proof}
@@ -143,4 +144,65 @@ Det næste resultat viser, at der for en reel funktion med definitionsmængden $
 \subsection{Integrabilitet}%
   \label{sub:Integrabilitet}
 
+Vi har nu set, at når vi tilføjer ekstra punkter til en inddeling så bliver undersummen potentielt større, og oversummen bliver potentielt mindre.
+Derudover er en undersum for en funktion altid mindre end en oversum, uanset mht. hvilken inddeling.
+Mængden af alle oversummer er så opad begrænset og mængden af alle undersummer er så nedad begrænset. 
+Derfor eksisterer supremum for mængden af alle oversummer og ligeledes eksisterer infimum for mængden af alle undersummer.
+Vi definerer det såkaldte øvre integral og nedre integral ud fra dette faktum.
+
+\begin{definition}[label=def:øvre_nedre_integral]{Øvre integral, nedre integral}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion, og lad $\mathfrak{P}$ være mængden af alle inddelinger af $[a;b]$.
+  Så er det øvre integral af $f$ defineret ved
+  \[
+  \upint_{a}^{b} f = \inf \{ U(f, P):P \in \mathfrak{P} \}.
+  \] 
+  Tilsvarende er det nedre integral af $f$ defineret ved
+  \[
+  \lowint_{a}^{b} f = \sup \{ L(f, P):P \in \mathfrak{P} \}.
+  \] 
+\end{definition}
+
+Det viser sig, at det nedre integral for en funktion altid er mindre end eller lig det øvre intagral for funktionen.
+
+\begin{theorem}[label=theo:Nedre_int_leq_øvre_int]{Nedre integral $\leq$ øvre integral }{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion. 
+  Så gælder
+  \[
+  \lowint_{a}^{b} f \leq \upint_{a}^{b} f  
+  \]
+\end{theorem}
+\begin{proof} 
+  Fra sætning \ref{theo:undersum_leq_oversum} har vi, at $L(f,P_1) \leq U(f,P_2) \text{ for alle }P_1, P_2 \in \mathfrak{P}$.
+  Fra definitionen af supremum (def. \ref{def:sup}) følger det så, at 
+\begin{equation*}
+\begin{split}
+  \lowint_{a}^{b} f &= \sup \{ L(f, P) : P \in \mathfrak{P}\} \\
+  &\leq U(f, P_2),
+\end{split}
+\end{equation*}
+  hvor $P_2 \in \mathfrak{P}$.
+  $\lowint_{a}^{b} f $ er da et undertal for mængden $\{ U(f, P): P \in \mathfrak{P}\} $, og siden infimum af en mængde altid er større end eller lig ethvert undertal for mængden, så har vi
+  \begin{equation*}
+  \begin{split}
+    \lowint_{a}^{b} f &\leq \inf \{ U(f, P): P \in \mathfrak{P} \} \\
+    &=\upint_{a}^{b} f.  
+  \end{split}
+  \end{equation*}
+\end{proof}
+
+Ved Riemann-integration arbejder vi kun med funktioner, hvor det øvre og nedre integral har en fælles værdi.
+
+\begin{definition}[label=def:integrabel]{Integrabel, integral}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion. 
+  Så er $f$ integrabel, hvis
+  \[
+  \lowint_{a}^{b} f = \upint_{a}^{b} f,   
+  \] 
+  og denne fælles værdi kaldes for integralet af $f$ fra $a$ til $b$, som denoteres 
+  \[
+  \int_{a}^{b} f \text{ eller }  \int_{a}^{b} f(x) \,dx.
+  \] 
+\end{definition}
+
+Det er imidlertid lidt vanskeligt at bevise, om en funktion er integrabel eller ej alene ud fra denne definition.
 
