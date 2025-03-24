@@ -1,10 +1,10 @@
 I dette afsnit definerer vi grænseværdien for en funktion stringent med den såkaldte $\varepsilon $-$\delta $-definition.
-Vi arbejder dog kun med reele funktioner med delmængder af $\mathbb{R}$ som definitionsmængde. 
+Vi arbejder dog kun med reele funktioner med delmængder af $\mathbb{R}$ som definitionsmængde. \footnote{Definitioner og sætninger i afsnittet er baseret på \cite{Bartle2010}, s. 125-143, medmindre andet er angivet.}
 
 Vi undersøger så kontinuerte funktioner med lukkede intervaller som definitionsmængde, da disse funktioner har nogle specielle egenskaber, der ikke er gældende for alle kontinuerte funktioner.
 Disse resultater benyttes senere til at bevise vigtige resultater for Riemann-integralet.
 
-\subsection{Grænseværdier af reele funktioner af delmængder af $\mathbb{R}$}%
+\subsection{Grænseværdier af reele funktioner defineret på delmængder af $\mathbb{R}$}%
 \label{sub:Grænseværdi}
 \begin{definition}[label=def:grænseværdi]{Grænseværdi af funktion}{}
   Antag $X \subseteq \mathbb{R}$, $f:X \to \mathbb{R}$, og $p$ er et fortætningspunkt af $X$.
@@ -156,6 +156,7 @@ Vi vil nu bevise, at hvis en funktion er uniform kontinuert på to lukkede inter
   Hvis $g$ er uniform kontinuert på intervallerne $[c;d]$ og $[e;f]$, så er $g$ uniform kontinuert på $[c;d] \cup [e;f]$.
 \end{theorem}
 \begin{proof} 
+  \footnote{Sætningen og beviset er selvstændigt udarbejdet.}
   Lad $\varepsilon >0$ være givet. 
 
   Betragt først tilfældet, hvor $[c;d]\cap [e;f]\neq \emptyset $.
@@ -229,7 +230,7 @@ Med andre ord er begreberne kontinuitet og uniform kontinuitet altså ækvivalen
   Så er $f$ uniform kontinuert på $[a;b]$.
 \end{theorem}
 \begin{proof} 
-  \footnote{Beviset er delvist baseret på \cite{Clausen1993}, s. 115-116.} 
+  \footnote{Beviset er med enkelte tilføjelser baseret på \cite{Clausen1993}, s. 115-116.} 
 Lad $\varepsilon >0$ være givet. 
   Siden $f$ er kontinuert i $a$, så eksisterer der $\delta_0$, hvor $0<\delta_0 \leq b$, sådan at når $x \in [a;a+\delta_0 ]$, så gælder $\abs{f(x)-f(a)} < \frac{\varepsilon }{2} $.
   Fra sætning \ref{theo:kontinuert_maks} har vi så, at der eksisterer $\alpha , \beta \in [a;a+\delta_0 ]$, sådan at

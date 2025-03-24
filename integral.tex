@@ -1,4 +1,4 @@
-Dette afsnit præsenterer Riemann-integralet.\footnote{Afsnittet er primært baseret på \cite{Abbott2002}, s. 183-194}
+Dette afsnit præsenterer Riemann-integralet.\footnote{Afsnittet er baseret på \cite{Abbott2002}, s. 183-194, medmindre andet er angivet.}
 Det skal dog bemærkes, at vi ikke benytter Riemanns originale definition, men derimod en videreudvikling af den franske matematiker Darboux.
 Det kan bevises, at de to definitioner på integralet er ækvivalente.\footnote{\cite{Bartle2010}, s. 231-232.}
 
@@ -6,7 +6,7 @@ Det kan bevises, at de to definitioner på integralet er ækvivalente.\footnote{
   \label{sub:Inddelinger samt over- og undersummer}
 
 Vi starter med nogle grundlæggende definitioner, vi har brug for til at definere integralet.
-\begin{definition}{Inddeling}{}
+\begin{definition}[label=def:inddeling]{Inddeling}{}
   Antag $a,\;b \in \mathbb{R}$ sådan at $a <b$.
   Ved en inddeling $P$ af $[a;b]$ forstår vi en endelig mængde $\{x_0,\dotsc, x_n\}$, hvor
   \[
@@ -23,11 +23,11 @@ Med en inddeling kan vi dele intervallet $[a;b]$ op i $n$ delintervaller, hvor d
 \] 
 Vi vil nu definere over- og undersummen af en funktion med hensyn til en given inddeling.
 
-\begin{definition}{Over- og undersum}{}
+\begin{definition}[label=def:oversum]{Over- og undersum}{}
   Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion, og $P=\{x_0,\ldots, x_n\}$ er en inddeling af $[a;b]$. 
   Lad 
   \[
-  M_i=\sup \{ f(x):x \in [x _{x_{i-1}};x_i] \} \quad{\text{og}} \quad m_i=\inf \{ f(x):x \in [x _{x_{i-1}};x_i] \}.
+  M_i=\sup \{ f(x):x \in [x _{i-1};x_i] \} \quad{\text{og}} \quad m_i=\inf \{ f(x):x \in [x _{i-1};x_i] \}.
   \] 
   Så er oversummen af $f$ med hensyn til $P$ defineret ved
   \[
@@ -292,6 +292,45 @@ Så har vi $\upint_{a}^{b} f - \lowint_{a}^{b} f >0$.
 \end{proof}
 
 Med dette kriterie for integrabilitet kan vi bevise, om bestemte funktioner, eller typer af funktioner er (Riemann)-integrable.
+Det næste vigtige resultat viser, at alle kontinuerte funktioner på lukkede intervaller er integrable.
+
+\begin{theorem}[label=theo:kontinuert_integrabel]{Kontinuert funktion på lukket interval er integrabel}{}
+  Antag funktionen $f:[a;b] \to \mathbb{R}$ er kontinuert på $[a;b]$. 
+  Så er $f$ integrabel. 
+\end{theorem}
+\begin{proof} 
+  Siden $f$ er kontinuert på $[a;b]$, så følger det fra sætning \ref{theo:kontinuert_begrænset} og \ref{theo:kontinuert_uniform}, at $f$ er begrænset og uniform kontinuert i $[a;b]$. 
+  Lad $\varepsilon > 0$ være givet, og lad 
+  \[
+  \gamma = \frac{\varepsilon }{b-a}.
+  \] 
+  Så har vi $\gamma >0$, fordi vi i definition \ref{def:inddeling} kræver $a<b$. 
+  Siden $f$ er uniform kontinuert på $[a;b]$, så eksisterer $\delta >0$ sådan at når $p, q \in [a;b]$ og $\abs{p-q} < \delta  $, så gælder
+  \[
+  \abs{f(p)-f(q)} < \gamma.
+  \] 
+  Lad $P _{\varepsilon }=\{ x _{0}, \ldots , x_n \} $ være en inddeling af $[a;b]$, hvor $\Delta x_i < \delta  $ for $i=1, \ldots , n$. 
+  Fra sætning \ref{theo:kontinuert_maks} følger det så, at der i hvert delinterval eksisterer $p_i, q_i \in [x_{i-1}; x _{i}]$ sådan at
+  \[
+  f(p_i)=\sup \{ f(x): x \in [x _{i-1};x _{i}]\} = M_i \text{ og } f(q_i)=\inf \{ f(x): x \in [x _{i-1};x _{i}]\} = m_i
+  \] 
+  Siden $\abs{p_i - q_i} \leq \Delta x_i < \delta$, så har vi 
+\[
+  M_i-m_i = f(p_i) - f(q_i) < \gamma. 
+\] 
+Forskellen på over- og undersummen af $f$ med hensyn til $P _{\varepsilon }$ bliver så
+\begin{equation*}
+\begin{split}
+  U(f, P _{\varepsilon }) - L(f, P _{\varepsilon }) &= \sum_{i=1}^{n} M_i \Delta x_i - \sum_{i=1}^{n} m_i \Delta x_i\\
+  &=\sum_{i=1}^{n} \left(M_i - m_i\right) \Delta x_i \\
+  &<\sum_{i=1}^{n} \gamma \cdot \Delta x_i \\
+  &=\frac{\varepsilon }{b-a} \sum_{i=1}^{n} \Delta x_i \\
+  &=\varepsilon 
+\end{split}
+\end{equation*}
+Vi har nu vist, at forskellen på oversum og undersum kan gøres mindre end enhver $\varepsilon >0$, og det følger fra sætning \ref{theo:integrabilitetskriterie}, at $f$ er integrabel. 
+\end{proof}
+
 
 
 \subsection{Integralregningens hovedsætning}%
