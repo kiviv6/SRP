@@ -1,4 +1,4 @@
-I dette afsnit vil vi definere Riemann-integralet.\footnote{Afsnittet er primært baseret på \cite{Abbott2002}, s. 183-194}
+Dette afsnit præsenterer Riemann-integralet.\footnote{Afsnittet er primært baseret på \cite{Abbott2002}, s. 183-194}
 Det skal dog bemærkes, at vi ikke benytter Riemanns originale definition, men derimod en videreudvikling af den franske matematiker Darboux.
 Det kan bevises, at de to definitioner på integralet er ækvivalente.\footnote{\cite{Bartle2010}, s. 231-232.}
 
@@ -191,6 +191,8 @@ Det viser sig, at det nedre integral for en funktion altid er mindre end eller l
 \end{proof}
 
 Ved Riemann-integration arbejder vi kun med funktioner, hvor det øvre og nedre integral har en fælles værdi.
+Da vi i dette afsnit kun arbejder med Riemann-integralet og ikke andre integralbegreber, nøjes vi med at sige, at en funktion er integrabel, når den er Riemann-integrabel.
+Ligeledes kalder vi blot Riemann-integralet af en funktion for integralet af funktionen.
 
 \begin{definition}[label=def:integrabel]{Integrabel, integral}{}
   Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion. 
@@ -204,5 +206,95 @@ Ved Riemann-integration arbejder vi kun med funktioner, hvor det øvre og nedre 
   \] 
 \end{definition}
 
-Det er imidlertid lidt vanskeligt at bevise, om en funktion er integrabel eller ej alene ud fra denne definition.
+Bemærk, at den sidste notation for integralet ikke bidrager med nogen ny information.
+ Integrationsvariablen ($x$) kan nemlig lige så godt repræsenteres af et andet bogstav.
+Vi vil da primært benytte den første notation for integralet.
 
+\begin{example}[label=exa:Riemann-integrabel]{Riemann-integrabel funktion}{}
+  Lad funktion $f:[0; 1] \to \mathbb{R}$ være defineret ved
+  \[
+  f(x)=\pi.
+  \]
+  Det er klart, at arealet under grafen for $f$ må være $\pi $.
+  Vi vil nu vise, at funktionen er integrabel, og at integralet af $f$ fra $0$ til $1$ har denne værdi.
+
+  Siden funktionsværdien er konstant, har vi for enhver inddeling $P=\{ x_0, \ldots , x_n \} $ af $[0;1]$, at alle $M_i=m_i=\pi $.
+  Oversummerne bliver så
+  \begin{equation*}
+  \begin{split}
+    U(f, P)&=\sum_{i=1}^{n} M_i \Delta x_i \\
+    &= \pi \sum_{i=1}^{n} \Delta x_i \\
+    &= \pi.
+  \end{split}
+  \end{equation*}
+Tilsvarende bliver undersummerne
+  \begin{equation*}
+  \begin{split}
+    U(f, P)&=\sum_{i=1}^{n} m_i \Delta x_i \\
+    &= \pi \sum_{i=1}^{n} \Delta x_i \\
+    &= \pi.
+  \end{split}
+  \end{equation*}
+  Vi har altså $\{ U(f, P):P \in \mathfrak{P}\} =\{ L(f, P):P \in \mathfrak{P} \} =\{ \pi  \} $. 
+  Det er klart, at $\upint_{0}^{1} f = \lowint_{0}^{1} f =\pi $.
+  Således er funktionen integrabel, og integralet bliver da
+  \[
+  \int_{0}^{1} f = \pi. 
+  \] 
+\end{example}
+
+
+Det er imidlertid lidt vanskeligt at bevise, om en funktion er integrabel eller ej alene ud fra definition \ref{def:integrabel}.
+Den næste sætning viser da, at en funktion er integrabel præcis når forskellen på undersum og oversum kan gøres vilkårligt lille.
+
+\begin{theorem}[label=theo:integrabilitetskriterie]{Kriterie for integrabilitet}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er en begrænset funktion. 
+  Så er $f$ integrabel præcis når der for alle $\varepsilon >0$ eksisterer en inddeling $P _{\varepsilon }$ af $[a;b]$, sådan at 
+  \[
+  U(f, P _{\varepsilon }) - L(f, P _{\varepsilon }) < \varepsilon.    
+  \] 
+\end{theorem}
+\begin{proof} 
+  Antag først, at $f$ er integrabel, altså at $\upint_{a}^{b} f  =\lowint_{a}^{b} f $.
+  Siden $\upint_{a}^{b} f  $ er infimum af mængden af alle oversummer, så har vi for enhver given $\varepsilon >0$, at der eksisterer en inddeling $P_1$ af $[a;b]$ sådan at
+  \[
+  U(f, P_1) < \upint_{a}^{b} f + \frac{\varepsilon }{2}, 
+  \] 
+  for ellers ville $\upint_{a}^{b} f + \frac{\varepsilon }{2}  $ være et undertal. 
+
+  \noindent Ligeledes er $\lowint_{a}^{b} f $ supremum af mængden af undersummer, og der eksisterer en inddeling $P_2$ af $[a;b]$ sådan at
+  \[
+  L(f, P_2) > L(f) - \frac{\varepsilon }{2}.
+  \] 
+  Lad $P _{\varepsilon }=P_1 \cup P_2$, så har vi fra sætning \ref{theo:ulighed_overundersum}, at 
+  \begin{equation*}
+  \begin{split}
+    U(f, P _{\varepsilon }) - L(f, P _{\varepsilon }) &\leq U(f, P_1) - L(f, P_2)\\
+    &<\left(\upint_{a}^{b} f + \frac{\varepsilon }{2}  \right) - \left(\lowint_{a}^{b} f - \frac{\varepsilon }{2} \right) \\
+    &=\frac{\varepsilon }{2} + \frac{\varepsilon }{2}\\
+    &=\varepsilon. 
+  \end{split}
+  \end{equation*}
+Lighedstegnet på anden sidst linje kommer fra $f$'s integrabilitet.
+
+  Omvendt, antag nu, at der for enhver given $\varepsilon >0$ eksisterer en inddeling $P _{\varepsilon }$ af $[a;b]$, sådan at 
+\[
+  U(f, P _{\varepsilon }) - L(f, P _{\varepsilon }) < \varepsilon. 
+\] 
+  Der gælder så også, at 
+  \[
+  \upint_{a}^{b} f - \lowint_{a}^{b} f \leq U(f, P _{\varepsilon }) - L(f, P _{\varepsilon }).
+  \]
+Antag, at $f$ ikke er integrabel, hvilket vil sige, at $\upint_{a}^{b} f \neq \lowint_{a}^{b} f $.
+Så har vi $\upint_{a}^{b} f - \lowint_{a}^{b} f >0$.
+  Men så kan vi vælge $\varepsilon =\upint_{a}^{b} f - \lowint_{a}^{b} f$, hvilket fører til modstrid, fordi vi så får $\varepsilon  \leq U(f, P _{\varepsilon }) - L(f, P _{\varepsilon })$.
+  Således er $f$ integrabel. 
+\end{proof}
+
+Med dette kriterie for integrabilitet kan vi bevise, om bestemte funktioner, eller typer af funktioner er (Riemann)-integrable.
+
+
+\subsection{Integralregningens hovedsætning}%
+\label{sub:Integralregningens hovedsætning}
+Indtil nu har vi primært undersøgt, \textit{hvorvidt} bestemte funktioner og typer af funktioner er integrable.
+Vi har dog ikke præsenteret gode metoder til udregninger af disse integraler.
