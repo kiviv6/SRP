@@ -74,10 +74,12 @@ Det næste eksempel viser, at selv hvis et punkt $p$ tilhører definitionsmængd
 \label{sub:Kontinuert}
 
 
-\begin{definition}[label=def:kontinuert]{Kontinuert}{}
+\begin{definition}[label=def:kontinuert]{Kontinuert, diskontinuert}{}
  Antag $X \subseteq \mathbb{R}$, $f:X \to \mathbb{R}$ og $p \in X$.
 
   Så er $f$ kontinuert i $p$, hvis der for alle $\varepsilon >0$ eksisterer $\delta >0$ sådan at når $x \in X$ og $\abs{x-p} < \delta  $, så gælder $\abs{f(x)-f(p)}<\varepsilon $. 
+
+  Hvis $f$ ikke er kontinuert i $p$, så kaldes $f$ diskontinuert i $p$. 
 
   Hvis $f$ er kontinuert i alle punkter i $X$, så siger vi, at $f$ er kontinuert på $X$. 
 \end{definition}
@@ -103,10 +105,14 @@ Derudover medfører vores definition, at en funktion er kontinuert i alle isoler
   Altså er $f$ kontinuert i $p$. 
 \end{example}
 
+\begin{note}
+  lav nogle eksempler på kontinuerte og diskontinuerte funktioner.
+\end{note}
+
 
 \begin{definition}[label=def:begrænset_funktion]{Begrænset funktion}{}
   Antag $X \in \mathbb{R}$.
-  Så er en funktion $f:X \to \mathbb{R}$ begrænset, hvis der eksisterer $M \in \mathbb{R}$ sådan at $\abs{f(x)}\leq M$ for alle $x \in X$. 
+  Så er en funktion $f:X \to \mathbb{R}$ begrænset, hvis der eksisterer $M \in \mathbb{R}$, hvor $M>0$, sådan at $\abs{f(x)}\leq M$ for alle $x \in X$. 
 \end{definition}
 
 Det næste resultat viser, at en kontinuert funktion på et lukket interval er begrænset, og at dens værdimængde i øvrigt også er lukket.

@@ -1,4 +1,4 @@
-Dette afsnit præsenterer Riemann-integralet.\footnote{Afsnittet er baseret på \cite{Abbott2002}, s. 183-194, medmindre andet er angivet.}
+Dette afsnit præsenterer Riemann-integralet.\footnote{Afsnittet er baseret på \cite{Abbott2002}, s. 186-204, medmindre andet er angivet.}
 Det skal dog bemærkes, at vi ikke benytter Riemanns originale definition, men derimod en videreudvikling af den franske matematiker Darboux.
 Det kan bevises, at de to definitioner på integralet er ækvivalente.\footnote{\cite{Bartle2010}, s. 231-232.}
 
@@ -172,6 +172,7 @@ Det viser sig, at det nedre integral for en funktion altid er mindre end eller l
   \]
 \end{theorem}
 \begin{proof} 
+  \footnote{Øvelse 7.2.1 i \cite{Abbott2002}, s. 190.}
   Fra sætning \ref{theo:undersum_leq_oversum} har vi, at $L(f,P_1) \leq U(f,P_2) \text{ for alle }P_1, P_2 \in \mathfrak{P}$.
   Fra definitionen af supremum (def. \ref{def:sup}) følger det så, at 
 \begin{equation*}
@@ -206,7 +207,7 @@ Ligeledes kalder vi blot Riemann-integralet af en funktion for integralet af fun
   \] 
 \end{definition}
 
-Bemærk, at den sidste notation for integralet ikke bidrager med nogen ny information.
+Bemærk, at den sidste notation for integralet ikke bidrager med nogen ny information ift. den første.
  Integrationsvariablen ($x$) kan nemlig lige så godt repræsenteres af et andet bogstav.
 Vi vil da primært benytte den første notation for integralet.
 
@@ -291,7 +292,7 @@ Så har vi $\upint_{a}^{b} f - \lowint_{a}^{b} f >0$.
   Således er $f$ integrabel. 
 \end{proof}
 
-Med dette kriterie for integrabilitet kan vi bevise, om bestemte funktioner, eller typer af funktioner er (Riemann)-integrable.
+Med dette kriterie for integrabilitet kan vi bevise, om bestemte funktioner, eller typer af funktioner er integrable.
 Det næste vigtige resultat viser, at alle kontinuerte funktioner på lukkede intervaller er integrable.
 
 \begin{theorem}[label=theo:kontinuert_integrabel]{Kontinuert funktion på lukket interval er integrabel}{}
@@ -304,7 +305,7 @@ Det næste vigtige resultat viser, at alle kontinuerte funktioner på lukkede in
   \[
   \gamma = \frac{\varepsilon }{b-a}.
   \] 
-  Så har vi $\gamma >0$, fordi vi i definition \ref{def:inddeling} kræver $a<b$. 
+  Så har vi $\gamma >0$, fordi vi har $a<b$. 
   Siden $f$ er uniform kontinuert på $[a;b]$, så eksisterer $\delta >0$ sådan at når $p, q \in [a;b]$ og $\abs{p-q} < \delta  $, så gælder
   \[
   \abs{f(p)-f(q)} < \gamma.
@@ -331,9 +332,126 @@ Forskellen på over- og undersummen af $f$ med hensyn til $P _{\varepsilon }$ bl
 Vi har nu vist, at forskellen på oversum og undersum kan gøres mindre end enhver $\varepsilon >0$, og det følger fra sætning \ref{theo:integrabilitetskriterie}, at $f$ er integrabel. 
 \end{proof}
 
+\subsection{Integrabilitet af diskontinuerte funktioner}%
+\label{sub:Integralet af diskontinuerte funktioner}
+Vi har nu set, at alle kontinuerte funktioner på lukkede intervaller er integrable.
+Imidlertid kan man undre sig over, om også funktioner med diskontinuiteter kan være integrable med den anvendte definition.
+Det viser sig, at når en begrænset funktion på et lukket interval kun har endeligt mange diskontinuiteter, så er funktionen Riemann-integrabel. 
 
+Vi vil starte med at bevise, at hvis en funktion er integrabel på $[a;c]$ og $[c;b]$, så er funktionen integrabel på $[a;b]$.
+
+\begin{theorem}[label=theo:omvendt_indskud]{Omvendt indskudssætning}{}
+  Hvis en begrænset funktion $f: [a;b] \to \mathbb{R}$ er integrabel på $[a;c]$ og $[c;b]$, så er $f$ integrabel på $[a;b]$. 
+\end{theorem}
+\begin{proof} 
+  Siden $f$ er integrabel på $[a;c]$ og $[c;b]$, så har vi fra sætning \ref{theo:integrabilitetskriterie} har vi, at der for enhver $\varepsilon >0$ eksisterer en inddeling $P_1=\{ x_0, \ldots , x_n \} $ af $[a;c]$, sådan at
+  \[
+  U(f, P_1)-L(f, P_1)<\frac{\varepsilon }{2}.
+  \] 
+  Tilsvarende eksisterer en inddeling $P_2 = \{ x_n, \ldots , x_m \} $ af $[c;b]$, sådan at
+  \[
+  U(f, P_2)-L(f, P_2)<\frac{\varepsilon }{2}.
+  \] 
+  Lad $P _{\varepsilon }=P_1 \cup P_2=\{ x_0, \ldots , x_m \} $.
+  Så er $P _{\varepsilon }$ en inddeling af $[a;b]$, hvor forskellen på over- og undersum bliver
+  \begin{equation*}
+  \begin{split}
+    U(f, P_{\varepsilon })-L(f, P_{\varepsilon })&=\sum_{i  =1}^{m} (M_i - m_i) \Delta x_i \\
+    &=\sum_{i =1}^{n} (M_i - m_i) \Delta x_i + \sum_{i =n+1}^{m} (M_i-m_i) \Delta x_i \\
+    &=(U(f, P_1)-L(f, P_1)) + (U(f, P_2)-L(f, P_2))\\
+    &< \frac{\varepsilon }{2} + \frac{\varepsilon }{2} = \varepsilon.  
+  \end{split}
+  \end{equation*}
+  Altså er $f$ integrabel på $[a;b]$.
+\end{proof}
+
+Det næste resultat viser, at hvis en funktion defineret på $[a;b]$ er integrabel på alle lukkede intervaller, hvor det ene endepunkt er $a$ eller $b$ og det andet endepunkt er et indre punkt i $[a;b]$, så er funktionen integrabel på hele $[a;b]$.
+Ideen i beviset ligner meget beviset af den omvendte indskudssætning.
+
+\begin{theorem}[label=theo:integrabel_endepunkt]{}{}
+  Antag en begrænset funktion $f:[a;b] \to \mathbb{R}$ er integrabel på $[c;b]$ for alle $c \in \,]a;b[$.
+  Så er $f$ integrabel på $[a;b]$.
+  Tilsvarende hvis $f$ er integrabel på $[a;c]$ for alle $c \in \,]a;b[$, så er $f$ integrabel på $[a;b]$.
+\end{theorem}
+\begin{proof} 
+  Lad $\varepsilon >0$ være givet. 
+  Siden $f$ er begrænset, så eksisterer $B>0$ sådan at $\abs{f(x)} \leq B$ for alle $x \in [a;b]$. 
+
+  Antag først, at $f$ er integrabel på $[c;b]$ for alle $c \in \, ]a;b[$. 
+  Så eksisterer $x_1 \in \,]a;b[$ sådan at
+  \[
+  x_1 < a + \frac{\varepsilon }{4 B} \iff x_1 - a < \frac{\varepsilon }{4 B}, 
+  \] 
+  og $f$ er integrabel på $[x_1;b]$.
+  Det vil sige (sætning \ref{theo:integrabilitetskriterie}), at der eksisterer en inddeling $P_1$ af $[x_1;b]$, hvor forskellen på over- og undersum er
+  \[
+  U(f, P_1)-L(f, P_1) < \frac{\varepsilon }{2}. 
+  \] 
+  Lad $P _{\varepsilon }=\{ a \} \cup P_1$. 
+  Så er $P _{\varepsilon }$ en inddeling af $[a;b]$. 
+  Bemærk, at der for hvert delinterval gælder, at $M_i-m_i \leq 2 B$ (hvor $i=1, \ldots , n$), og forskellen på over- og undersummen af $f$ mht. $P _{\varepsilon }$ bliver så
+  \begin{equation*}
+  \begin{split}
+    U(f, P_{\varepsilon })-L(f, P_{\varepsilon })&= \sum_{i  =1}^{n} (M_i - m_i) \Delta x_i \\
+    &=(M_1-m_1)(x_1-a) + \sum_{i =2}^{n} (M_i - m_i) \Delta x_i \\
+    &=(M_1-m_1)(x_1-a) +(U(f, P_1)-L(f, P_1)) \\
+    &<2B \cdot \frac{\varepsilon }{4 B} + \frac{\varepsilon }{2}\\
+    &=\varepsilon 
+  \end{split}
+  \end{equation*}
+  Fra sætning \ref{theo:integrabilitetskriterie} følger det så, at $f$ er integrabel på $[a;b]$.
+
+  Antag så, at $f$ er integrabel på $[a;c]$ for alle $c \in \,]a;b[$.
+  Så eksisterer ligeledes $x_n \in \,]a;b[$, sådan at
+  \[
+  b-x_n < \frac{\varepsilon }{4 B}. 
+  \] 
+  Da $f$ er integrabel på $[a;x_n]$, så eksisterer også en inddeling $P_n$ af $[a;x_n]$, hvor
+  \[
+  U(f, P_n)-L(f, P_n) < \frac{\varepsilon }{2}. 
+  \] 
+  Vi lader igen ligeledes $P _{\varepsilon }=P_n \cup \{ b \} $, og får forskellen på over- og undersummen af $f$ mht. $P _{\varepsilon }$ til
+  \begin{equation*}
+  \begin{split}
+  U(f, P_{\varepsilon })-L(f, P_{\varepsilon })&= \sum_{i  =1}^{n} (M_i - m_i) \Delta x_i \\
+    &=(M_n-m_n)(b-x_n) + \sum_{i =1}^{n-1} (M_i - m_i) \Delta x_i \\
+    &\leq \left(2 B\right) (b-x_n) +(U(f, P_n)-L(f, P_n)) \\
+    &<\frac{\varepsilon }{2} + \frac{\varepsilon }{2}\\
+    &=\varepsilon 
+  \end{split}
+  \end{equation*}
+  Altså er $f$ integrabel på $[a;b]$.
+\end{proof}
+
+Med sætning \ref{theo:omvendt_indskud} og \ref{theo:integrabel_endepunkt} kan vi bevise, at funktioner på lukkede intervaller med endeligt mange diskontinuiteter er integrable.
+
+\begin{theorem}[label=theo:endelig_diskontinuiert_integrabel]{Begrænset funktion på lukket interval med endeligt mange diskontinuiteter er integrabel}{}
+  En funktion $f:[a;b] \to \mathbb{R}$, som er diskontinuert i endeligt mange punkter $p_1, \ldots , p_n \in [a;b]$, er integrabel.
+\end{theorem}
+\begin{proof} 
+  
+\end{proof}
+
+Hvis en funktion skal være ikke-integrabel, så kan den altså ikke have endeligt mange diskontinuiteter.
+Et eksempel på en ikke-integrabel funktion er Dirichlets funktion, som vi undersøger i det næste eksempel.
+
+\begin{example}[label=exa:ikke-integrabel]{Ikke-integrabel funktion}{}
+  Betragt funktionen $f:[0;1] \to \mathbb{R}$ givet ved
+  \[
+  f(x)= 
+  \begin{cases}
+    1, &\text{ hvis } x \text{ rational }\\
+    0, &\text{ hvis } x \text{ irrational.}
+  \end{cases}
+  \] 
+\end{example}
+
+Det skal dog tilføjes, at der eksisterer funktioner med uendeligt mange diskontinuiteter, der stadig er Riemann-integrable.
+Dette undersøges nærmere i afsnit \ref{sec:Diskussion}.
 
 \subsection{Integralregningens hovedsætning}%
 \label{sub:Integralregningens hovedsætning}
 Indtil nu har vi primært undersøgt, \textit{hvorvidt} bestemte funktioner og typer af funktioner er integrable.
 Vi har dog ikke præsenteret gode metoder til udregninger af disse integraler.
+
+
