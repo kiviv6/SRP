@@ -426,10 +426,21 @@ Ideen i beviset ligner meget beviset af den omvendte indskudssætning.
 Med sætning \ref{theo:omvendt_indskud} og \ref{theo:integrabel_endepunkt} kan vi bevise, at funktioner på lukkede intervaller med endeligt mange diskontinuiteter er integrable.
 
 \begin{theorem}[label=theo:endelig_diskontinuiert_integrabel]{Begrænset funktion på lukket interval med endeligt mange diskontinuiteter er integrabel}{}
-  En funktion $f:[a;b] \to \mathbb{R}$, som er diskontinuert i endeligt mange punkter $p_1, \ldots , p_n \in [a;b]$, er integrabel.
+  En begrænset funktion $f:[a;b] \to \mathbb{R}$, som er diskontinuert i endeligt mange punkter $p_1, \ldots , p_n \in [a;b]$, er integrabel.
 \end{theorem}
 \begin{proof} 
+  Betragt først tilfældet, hvor $f$ er diskontinuert i et enkelt punkt $p_1 \in [a;b]$. 
+
+  Hvis $a<p_1<b$, så er $f$ kontinuert på $[a;c]$ for alle $c \in \, ]a;p_1[$, og kontinuert på $[d;b]$ for alle $d \in\, ]p_1;b[$.
+  Altså er $f$ også integrabel på intervallerne $[a;c]$ og $[d;b]$.
+  Fra sætning \ref{theo:integrabel_endepunkt} har vi så, at $f$ er integrabel på $[a;p]$ og $[p;b]$. 
+  Den omvendte indskudssætning giver os så, at $f$ er integrabel på $[a;b]$. 
+
+  Hvis $p_1=a$ eller $p_1=b$, så er $f$ enten kontinuert og derfor integrabel for alle $c \in \, ]a;b[$ på enten $[c;b]$ eller på $[a;c]$.
+  I begge tilfælde følger det direkte fra sætning \ref{theo:integrabel_endepunkt}, at $f$ er integrabel på $[a;b]$. 
   
+  Tilføjer vi et ekstra punkt $p_2 \in [a;b]$, hvor $f$ også er diskontinuert, så kan vi med samme argumentation komme frem til, at $f$ er integrabel på $[a;b]$ (vi laver blot ét delinterval mere).
+Ved induktion har vi så, at hvis $f$ er diskontinuert i et endeligt antal punkter $p_1, \ldots , p_n$, så er $f$ integrabel. 
 \end{proof}
 
 Hvis en funktion skal være ikke-integrabel, så kan den altså ikke have endeligt mange diskontinuiteter.
