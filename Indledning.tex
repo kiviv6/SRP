@@ -1,0 +1,35 @@
+Da integralregningen blev opfundet i anden halvdel af 1600-tallet med markante bidrag fra blandt andet Newton og Leibniz, var det primært med formålet at bestemme arealer og rumfang.\footnote{\cite{Clausen1993}, s. 129-132.}
+Man valgte at definere integration som den omvendte process af differentiation.
+Med andre ord sagde man, at integralet for en funktion $f$ var dens stamfunktion $F$, hvor $F'=f$, og med grænser på, var integralet defineret som
+\begin{equation}
+  \label{eq:stamfunktion}
+  \int_{a}^{b} f(x) \,dx =F(b)-F(a).\footnote{Notationen af integralet med grænser blev egentligt først brugt i begyndelsen af 1800-tallet af Fourier, men det ændrer ikke på definitionen af begrebet. Ibid.}
+\end{equation}
+Dette giver imidlertid anledning til problemer, idet der findes mange funktioner, hvor stamfunktionen ikke eksisterer.
+Navnligt er der blandt andet tale om funktioner med bestemte typer af diskontinuiteter.
+Eksempelvis kan man vise, at en funktion $f:[0;1] \to \mathbb{R}$ defineret ved 
+\[
+f(x)= 
+\begin{cases}
+  2, &\text{ hvis } 0 \leq x <\frac{1}{2}\\
+  0, &\text{ hvis } \frac{1}{2} \leq x \leq 1.
+\end{cases}
+\] 
+ikke har nogen stamfunktion.\footnote{Faktummet følger fra den såkaldte mellemværdisætning for afledede funktioner, \cite{Rudin1976}, s. 108.}
+Med definitionen af integralet fra 1600-tallet er integralet for funktionen på intervallet $[0;1]$ altså ikke defineret, selvom arealet under grafen for $f$ åbenlyst er $1$. 
+
+Dette motiverer et nyt integralbegreb, der ikke er defineret ud fra differentiation.
+I denne artikel introducerer vi da Riemann-integralet, der er en mere generel definition på integralet, hvor blandt andet den ovennævnte funktion er integrabel.
+Derudover gælder der, at hvis stamfunktionen $F$ for en funktion $f$ eksisterer, så gælder ligning (\ref{eq:stamfunktion}) stadig.
+Sætningen kalder vi for integralregningens hovedsætning.
+
+Siden Riemann-integralet er bygget på nogle bestemte egenskaber for de reele tal, er det netop, hvad vi vil starte med at undersøge i artiklen.
+Derefter definerer vi grænseværdi, kontinuitet og uniform kontinuitet stringent med $\varepsilon$-$\delta $-definitioner.
+Disse begreber benytter vi senere til at bevise centrale sætninger om Riemann-integralet.
+Vi beviser blandt andet, at alle kontinuerte funktioner på et interval $[a;b]$ er Riemann-integrable.
+Derudover beviser vi også, at alle begrænsede funktioner med endeligt mange diskontinuiteter er Riemann-integrable.
+
+Dernæst i artiklen præsenteres Simpsons metode, der kan bruges til at approksimere integralet for en kontinuert funktion.
+Til sidst findes en diskussion/perspektivering om videreudviklingen af integralbegrebet, hvor enkelte svagheder ved Riemann-integralet undersøges nærmere.
+
+

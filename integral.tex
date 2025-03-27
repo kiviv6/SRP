@@ -455,6 +455,20 @@ Et eksempel på en ikke-integrabel funktion er Dirichlets funktion, som vi under
     0, &\text{ hvis } x \text{ irrational.}
   \end{cases}
   \] 
+Der gælder for alle tal i $x \in \mathbb{R}$, at $x$ er et fortætningspunkt af $\mathbb{Q}$ eller $x \in \mathbb{Q}$. 
+  Tilsvarende gælder der også for alle $x \in \mathbb{R}$, at $x$ er et fortætningspunkt af $\mathbb{R} \setminus \mathbb{Q}$ eller $x \in \mathbb{R} \setminus \mathbb{Q}$.\footnote{Se \cite{Rudin1976}, s. 9.}
+
+  For enhver inddeling $P=\{ x_0, \ldots , x_n \}$ af $[0;1]$ har vi så, at hvert af dets delintervaller $[x _{i-1};x_i]$ (hvor $i=1,\ldots , n$) både indeholder rationelle og irrationelle tal. 
+  Det vil sige, at oversummen bliver
+  \[
+  U(f, P)=\sum_{i  =1}^{n} 1 \cdot \Delta x_i =1. 
+  \] 
+  Samtidigt bliver undersummen
+\[
+  L(f ,P)=\sum_{i =1}^{n} 0 \cdot \Delta x_i =0.
+\] 
+  Det øvre integral bliver så $\upint_{0}^{1} f =1$, og det nedre integral bliver $\lowint_{0}^{1} f =0 $.
+  Siden $\upint_{0}^{1} f \neq \lowint_{0}^{1} f$, så er $f$ ikke integrabel. 
 \end{example}
 
 Det skal dog tilføjes, at der eksisterer funktioner med uendeligt mange diskontinuiteter, der stadig er Riemann-integrable.
