@@ -4,6 +4,7 @@
 \usepackage{multicol}
 \usepackage{makecell}
 \pgfplotsset{compat=1.9}
+\usepgfplotslibrary{fillbetween}
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations.pathreplacing}
@@ -109,7 +110,6 @@
 \newtcbtheorem[number within=section, use counter*=defin]{definition}{Definition}
 {%
 	enhanced,
-	breakable,
 	colback = red!5,
 	frame hidden,
 	boxrule = 0sp,
@@ -234,7 +234,15 @@
 %\include{title.tex}
 \includepdf{fig/SRP2025_3b22_MinruiKevinZhou.pdf}
 \begin{abstract}
-  Dette er mit resumé.
+  Tidligere i 1600-tallet blev integration defineret som det omvendte af differentiation.
+  En sådan definition er ikke ideel, da blandt andet funktioner med bestemte typer af diskontinuiteter så ikke er integrable.
+  Denne artikel præsenterer det mere generelle Riemann-integral, der defineres uafhængigt fra differentiation. 
+
+  Integrationsteorien opbygges stringent fra bunden med egenskaber ved de reele tal.
+  Derefter indføres stringente definitioner på grænseværdier og kontinuitet for reele funktioner defineret på delmængder af $\mathbb{R}$.
+  Riemann-integralet defineres så, og vi beviser, at alle kontinuerte funktioner er integrable med den anvendte definition.
+  Derudover er begrænsede funktioner med endeligt mange diskontinuiteter også integrable.
+  Vi beviser også integralregningens hovedsætning, der siger, at den tidligere definition på integralet som omvendt differentiation bliver til et specialtilfælde hos Riemann-integralet.
 \end{abstract}
 
 \tableofcontents
@@ -272,9 +280,11 @@
 
 \section{Diskussion - videreudvikling af integrationsteorien}%
 \label{sec:Diskussion}
+\input{diskussion.tex}
 
 \section{Konklusion}%
 \label{sec:Konklusion}
+\input{konklusion.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%

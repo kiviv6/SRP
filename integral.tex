@@ -478,5 +478,86 @@ Dette undersøges nærmere i afsnit \ref{sec:Diskussion}.
 \label{sub:Integralregningens hovedsætning}
 Indtil nu har vi primært undersøgt, \textit{hvorvidt} bestemte funktioner og typer af funktioner er integrable.
 Vi har dog ikke præsenteret gode metoder til udregninger af disse integraler.
+Integralregningens hovedsætning, som vi beviser her, fortæller, at hvis en funktion er integrabel, og stamfunktionen eksisterer, så kan vi udregne integralet med de sædvanlige metoder (dvs. stamfunktionsbestemmelse).
 
+Vi starter med at bevise middelværdisætningen for afledede funktioner, som vi skal bruge i beviset for integralregningens hovedsætning.
+
+\begin{theorem}[label=theo:middelværdi]{Middelværdisætningen}{}
+  Hvis en funktion $f:[a;b]\to \mathbb{R}$ er kontinuert på $[a;b]$ og differentiabel på $]a;b[$, så eksisterer et punkt $x \in \,]a;b[$, sådan at
+  \[
+  f'(x)(b-a)=f(b)-f(a)
+  \] 
+\end{theorem}
+\begin{proof} 
+  \footnote{Beviset er baseret på \cite{Rudin1976}, s. 107-108.}
+  Lad $g:[a;b]\to \mathbb{R}$ være givet ved 
+  \[
+  g(p)=(f(b)-f(a)) \cdot p - f(p)\cdot(b-a).
+  \] 
+  Man kan så vise, at $g$ er kontinuert på $[a;b]$ og differentiabel på $]a;b[$ med
+  \[
+  g'(p)=(f(b)-f(a)) - f'(p) \cdot (b-a).
+  \] 
+Derudover gælder også, at
+\begin{equation*}
+\begin{split}
+  g(a)&=f(b) \cdot a -f(a)\cdot b - f(a) \cdot b + f(a) \cdot a \\
+  &=f(b) \cdot a - f(a) \cdot b\\
+  &=f(b) \cdot b - f(a) \cdot b - f(b) \cdot b + f(b) \cdot a \\
+  &= g(b).
+\end{split}
+\end{equation*}
+  Hvis $g$ er konstant på $[a;b]$, så er $g'(x)=0$ for alle $x \in \,]a;b[$. 
+
+  \noindent Hvis der derimod er $p \in \,]a;b[$, sådan at $g(p)>g(a)=g(b)$, så fra sætning \ref{theo:kontinuert_maks} eksisterer der et punkt $x \in \,]a;b[$, hvor $g$ har et lokalt maksimum, og $g'(x)=0$. 
+
+  \noindent Hvis der til sidst er $p \in \,]a;b[$, sådan at $g(p)<g(a)=g(b)$, så har vi ligedes, at der eksisterer der et punkt $x \in \,]a;b[$, hvor $g$ har et lokalt minimum, og $g'(x)=0$. 
+ 
+  Vi har altså vist, at der altid eksisterer et punkt $x \in \, ]a;b[$, hvor der gælder
+  \begin{equation*}
+  \begin{split}
+    g'(x)=0 &\iff (f(b)-f(a)) - f'(x) \cdot (b-a)=0 \\
+    &\iff f'(x)(b-a)=f(b)-f(a).
+  \end{split}
+  \end{equation*}
+\end{proof}
+
+Vi kan nu bevise integralregningens hovedsætning.
+
+\begin{theorem}[label=theo:hovedsætning]{Integralregningens hovedsætning}{}
+  Antag $f:[a;b] \to \mathbb{R}$ er integrabel, og $F:[a;b] \to \mathbb{R} $, hvor $F'(x)=f(x)$ for alle $x \in [a;b]$. 
+  Så gælder 
+  \[
+  \int_{a}^{b} f =F(b)-F(a).
+  \] 
+\end{theorem}
+\begin{proof} 
+  Lad $P=\{ x_0, \ldots , x_n \} $ være enhver inddeling af $[a;b]$. 
+  Fra middelværdisætningen har vi så, at der i hvert delinterval eksisterer et punkt $p_i \in [x _{i-1};x_i]$ (hvor $i=1,\ldots , n$), sådan at
+  \begin{equation*}
+  \begin{split}
+    F(x_i)-F(x_{i-1}) &=F'(p_i) \left(x_i- x _{i-1}\right)\\
+    &=f(p_i)\Delta x_i.
+  \end{split}
+  \end{equation*}
+  Imidlertid har vi
+  \begin{equation*}
+  \begin{split}
+    \sum_{i =1}^{n} f(p_i)\Delta x_i &= \sum_{i =1}^{n} \left(F(x_i) - F(x _{i-1})\right) \\
+    &=F(b)-F(a).
+  \end{split}
+  \end{equation*}
+  Siden $m_i \leq f(p_i) \leq M_i$ for $i=1, \ldots , n$, så får vi uligheden
+  \begin{equation*}
+  \begin{split}
+    L(f, P) \leq \sum_{i =1}^{n} f(p_i) \Delta x_i \leq U(f, P) &\iff L(f, P) \leq F(b)-F(a) \leq U(f, P)\\
+    &\iff \lowint_{a}^{b} f \leq F(b) -F(a) \leq \upint_{a}^{b} f,
+  \end{split}
+  \end{equation*}
+  hvor den sidste implikation holder, fordi udtrykket $F(b)-F(a)$ ikke afhænger af inddelingen. 
+  Fra vores antagelse om, at $f$ er integrabel, følger det imidlertid, at $\int_{a}^{b} f= \upint_{a}^{b} f=\lowint_{a}^{b} f$, og vi har
+  \[
+  \int_{a}^{b} f =F(b)-F(a).
+  \] 
+\end{proof}
 

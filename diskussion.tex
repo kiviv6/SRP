@@ -1,0 +1,84 @@
+Selvom Riemann-integralet løser mange af problemerne, som definitionen på integralet fra 1600-tallet havde, så er Riemann-integralet ikke perfekt, hvilket vi i dette afsnit vil se.\footnote{Afsnittet er baseret på \cite{Axler2020}, s. 9-12, medmindre andet er angivet.}
+
+\subsection{Riemann-integralets svagheder}%
+\label{sub:svagheder}
+Indtil nu har vi bevist for forskellige typer af funktioner, at de er integrable.
+Vi har dog ikke været i stand til at sige, \textit{præcis hvornår} en funktion er Riemann-integrabel.
+Hvor nogle funktioner med uendeligt mange diskontinuiteter er integrable, så er andre ikke.
+Præcis hvor diskontinuert må en funktion så være, før den er ikke-integrabel?
+For at kunne svare på dette spørgsmål, er man nødt til at benytte en generalisering af størrelsen for en mængde, der kaldes for mængdens mål.
+Denne målteori blev opfundet af Lebesgue i starten af 1900-tallet, hvor han også indførte et nyt integralbegreb, Lebesgue-integralet.
+
+For at forstå behovet for en ny definition på integralet, vil vi kigge på et eksempel.
+
+\begin{example}[label=exa:arealmening]{Ikke-integrabel funktion, hvor arealet giver mening}{}
+  Lad $r_1, r_2, \ldots $ være en følge\footnote{En følge er blot en funktion med de naturlige tal $\mathbb{N}$ som definitionsmængde}, der præcis indeholder hvert rationalt tal i $]0;1[$ én gang. 
+  Lad $f_k:[0;1] \to \mathbb{R}$ være defineret ved
+  \[
+  f_k= 
+  \begin{cases}
+    \frac{1}{\sqrt{x-r_k} }, &\text{ hvis } x>r_k\\
+    0, &\text{ hvis } x \leq r_k,
+  \end{cases}
+  \] 
+  hvor $k \in \mathbb{Z}^+$.
+  Lad $f:[0;1] \to \mathbb{R}^+$ være defineret ved
+\[
+  f(x)= \sum_{k=1}^{\infty} \frac{f_k(x)}{2^k}. 
+\] 
+  Så har vi, at arealet $A_k$ under grafen for hver $f_k$ må være (se \cref{fig:arealmening})
+  \begin{equation*}
+  \begin{split}
+   A_k &< \int_{0}^{1} \frac{1}{\sqrt{x}} \,dx  \\
+  &=\left[2 \sqrt{x} \,\right]_{0}^1 \\
+    &=2.
+  \end{split}
+  \end{equation*}
+Arealet under grafen for $f$ må så være
+\begin{equation*}
+\begin{split}
+  A&=\sum_{k=1}^{\infty} \frac{A_k}{2^k}\\
+  &<\sum_{k=1}^{\infty} \frac{2}{2^k}\\
+  &=2.
+\end{split}
+\end{equation*}
+Man kan vise at rækken konvergerer til $2$.
+Vi vil altså gerne have, at arealet under grafen for $f$ skal være mindre end $2$. 
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=1.6, transform shape]
+\begin{axis}[xmin=-0.1, xmax=1.1, ymin=-0.5, ymax=8, axis lines=middle,
+  xlabel=$x$,ylabel=$y$,
+  xtick={0.2,1},
+  xticklabels={$r_k$,1},
+  xticklabel style={anchor=north, font=\footnotesize},
+  ytick={0},
+  yticklabels={$0$},
+  every major tick/.append style={thick, major tick length=5pt, black},
+  yticklabel style={anchor=east, font=\footnotesize}
+  ]
+  \clip (axis cs:-0.1,-0.5) rectangle (axis cs:1.2, 8.1);
+  \addplot[color=red, domain=0.201:1, samples=100, name path=f, thick]{(x-0.2)^(-1/2)} node[right=5pt, pos=0.9, font=\small] {$f_k=\begin{cases}
+    \frac{1}{\sqrt{x-r_k} }, &\text{ hvis } x>r_k\\
+    0, &\text{ hvis } x \leq r_k
+  \end{cases}
+$};
+  \draw[color=blue, dashed] (axis cs:0.2,0) -- (axis cs:0.2,8);
+  \path [name path=xaxis] (axis cs:0.2,0) -- (axis cs: 1,0);
+\addplot[gray!30, opacity=0.9] fill between [of=f and xaxis, soft clip={domain=0.2:1}];
+  \draw (axis cs: 0.4,1) node {$A_k<2$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+  \caption{Grafen for $f_k$}%
+\label{fig:arealmening}
+\end{figure}
+Imidlertid har vi for enhver inddeling $P={x_0, \ldots , x_n}$ af $[0;1]$, at alle dens delintervaller $[x_{i-1};x_i]$ (hvor $i=1,\ldots , n$) indeholder et rationalt tal $r_k$, hvilket vil sige, at $f_k$ ikke er begrænset på deltintervallet. 
+Man kan så vise, at $f$ af den grund heller ikke er begrænset på alle inddelingens delintervaller.
+Altså er Riemann-integralet ikke defineret for $f$ i intervallet $[0;1]$.
+\end{example}
+
+Udover det netop viste eksemepel, har vi også vist, at en funktion med alt for mange diskontinuiteter ikke er Riemann-integrabel (se Dirichlets funktion i eksempel \ref{exa:ikke-integrabel}).
+Derudover er Riemann-integralet kun defineret for begrænsede funktioner.
+Disse er alle sammen gode grunde til den videreudvikling af integrationsteorien, som Lebesgue gav sig til at lave i 1900-tallet.
+
